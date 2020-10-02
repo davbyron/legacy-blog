@@ -1,1 +1,1 @@
-Sitemap: https://davbyron.github.io/deep-knowlegde-blog/sitemap.xml
+Sitemap: https://davbyron.github.io/blog/sitemap.xml
