@@ -1,1 +1,1 @@
-Sitemap: https://davbyron.github.io/blog/sitemap.xml
+Sitemap: https://davidbyron.info/blog/sitemap.xml
