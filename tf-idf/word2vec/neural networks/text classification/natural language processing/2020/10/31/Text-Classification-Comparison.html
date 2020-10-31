@@ -9,15 +9,15 @@
 <meta property="og:title" content="A Comparison of TF-IDF, Word2Vec, and Transfer Learning for Text Classification" />
 <meta name="author" content="David Byron" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Summary" />
-<meta property="og:description" content="Summary" />
+<meta name="description" content="A blog dedicated to learning while educating about natural language processing and computational linguistics" />
+<meta property="og:description" content="A blog dedicated to learning while educating about natural language processing and computational linguistics" />
 <link rel="canonical" href="https://davidbyron.info/blog/tf-idf/word2vec/neural%20networks/text%20classification/natural%20language%20processing/2020/10/31/Text-Classification-Comparison.html" />
 <meta property="og:url" content="https://davidbyron.info/blog/tf-idf/word2vec/neural%20networks/text%20classification/natural%20language%20processing/2020/10/31/Text-Classification-Comparison.html" />
 <meta property="og:site_name" content="How To Speak Computer" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-10-31T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://davidbyron.info/blog/tf-idf/word2vec/neural%20networks/text%20classification/natural%20language%20processing/2020/10/31/Text-Classification-Comparison.html","@type":"BlogPosting","headline":"A Comparison of TF-IDF, Word2Vec, and Transfer Learning for Text Classification","dateModified":"2020-10-31T00:00:00-05:00","datePublished":"2020-10-31T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidbyron.info/blog/tf-idf/word2vec/neural%20networks/text%20classification/natural%20language%20processing/2020/10/31/Text-Classification-Comparison.html"},"author":{"@type":"Person","name":"David Byron"},"description":"Summary","@context":"https://schema.org"}</script>
+{"url":"https://davidbyron.info/blog/tf-idf/word2vec/neural%20networks/text%20classification/natural%20language%20processing/2020/10/31/Text-Classification-Comparison.html","@type":"BlogPosting","headline":"A Comparison of TF-IDF, Word2Vec, and Transfer Learning for Text Classification","dateModified":"2020-10-31T00:00:00-05:00","datePublished":"2020-10-31T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://davidbyron.info/blog/tf-idf/word2vec/neural%20networks/text%20classification/natural%20language%20processing/2020/10/31/Text-Classification-Comparison.html"},"author":{"@type":"Person","name":"David Byron"},"description":"A blog dedicated to learning while educating about natural language processing and computational linguistics","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://davidbyron.info/blog/feed.xml" title="How To Speak Computer" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -72,7 +72,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">A Comparison of TF-IDF, Word2Vec, and Transfer Learning for Text Classification</h1><p class="page-description">Summary</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-10-31T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">A Comparison of TF-IDF, Word2Vec, and Transfer Learning for Text Classification</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-10-31T00:00:00-05:00" itemprop="datePublished">
         Oct 31, 2020
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -163,9 +163,9 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#Transfer-Learning-with-Unprocessed-Tweets">Transfer Learning with Unprocessed Tweets </a></li>
 <li class="toc-entry toc-h3"><a href="#Transfer-Learning-with-"Simple"-Tweets">Transfer Learning with &quot;Simple&quot; Tweets </a></li>
 <li class="toc-entry toc-h3"><a href="#Transfer-Learning-with-SpaCy-Tweets">Transfer Learning with SpaCy Tweets </a></li>
-<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h1"><a href="#Conclusion">Conclusion </a></li>
 </ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
@@ -646,7 +646,7 @@ dtype: int64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'en'</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="p">[</span><span class="s1">'ner'</span><span class="p">,</span> <span class="s1">'parser'</span><span class="p">])</span> <span class="c1"># disabling features we don't need, for speed</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'en'</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="p">[</span><span class="s1">'ner'</span><span class="p">,</span> <span class="s1">'parser'</span><span class="p">])</span>
 
 <span class="k">def</span> <span class="nf">spacy_cleaning</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
     <span class="sd">""" Returns a string that has been lemmatized and rid of stop words via SpaCy. """</span>
@@ -3602,6 +3602,9 @@ We'll start by analyzing the unprocessed tweets.</p>
     
     
 <div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
 <div class="input">
 
 <div class="inner_cell">
@@ -3623,6 +3626,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 </div>
 </div>
 
+    </details>
 </div>
     
 
@@ -5279,7 +5283,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can now instantiate our <code>language_model_learner</code> using the <code>DataBlock</code> we just created and <code>AWD_LSTM</code> which is a pretrained model provided by fastai. You can learn more about <code>AWD_LSTM</code> <a href="https://arxiv.org/pdf/1708.02182.pdf">here</a>.</p>
+<p>We can now instantiate our <code>language_model_learner</code> using the <code>DataBlock</code> we just created and <code>AWD_LSTM</code>, which is a pretrained model provided by fastai. You can learn more about <code>AWD_LSTM</code> <a href="https://arxiv.org/pdf/1708.02182.pdf">here</a>.</p>
 
 </div>
 </div>
@@ -5493,7 +5497,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The accuracy above represents the models ability to predict the next word in a sequence from our disaster tweets data. 42.51%! That's pretty dang good for something that took about the same time as our Word2Vec models.</p>
+<p>The accuracy above represents the models ability to predict the next word in a sequence from our disaster tweets data. <code>42.51%</code>! That's pretty dang good for something that took about the same time as our Word2Vec models.</p>
 <p>But we're not after text prediction, we're after text classification. Let's turn to that now.</p>
 <p>First, let's create a <code>DataBlock</code> that we'll pass to <code>text_classifier_learner</code>. Notice that now we're passing two blocks to the <code>blocks</code> parameter: <code>TextBlock</code> and <code>CategoryBlock</code>. We specify these with the <code>get_x</code> and <code>get_y</code> parameters. It is also important to note the new <code>TextBlock</code> parameter <code>vocab</code>. Without this, the language model fitting we did above will mean nothing!</p>
 
@@ -5701,7 +5705,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And that's. It.</p>
-<p>Crazy, right?! One last step that we need to take care of to inch our models accuracy up further is <a href="https://stats.stackexchange.com/questions/393168/what-does-it-mean-to-freeze-or-unfreeze-a-model">gradual unfreezing</a>. Unfreezing a few layers at a time seems to make a real different in NLP, so we'll do that here (in computer vision, the model will often be unfrozen all at once).</p>
+<p>Crazy, right?! One last step that we need to take care of to inch our models accuracy up further is <a href="https://stats.stackexchange.com/questions/393168/what-does-it-mean-to-freeze-or-unfreeze-a-model">gradual unfreezing</a>. Unfreezing a few layers at a time seems to make a meaningful difference in NLP, so we'll do that here (in computer vision, the model will often be unfrozen all at once).</p>
 
 </div>
 </div>
@@ -6806,9 +6810,9 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">
+<h1 id="Conclusion">
 <a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
-</h2>
+</h1>
 </div>
 </div>
 </div>
