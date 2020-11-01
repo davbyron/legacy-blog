@@ -80,7 +80,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      83 min read
+      54 min read
     
 </span></p>
 
@@ -242,7 +242,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'train.csv'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./data/disaster_tweets/train.csv'</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -1300,7 +1300,7 @@ dtype: int64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="p">,</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train</span><span class="p">,</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 
 <span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">valid</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
@@ -1365,31 +1365,31 @@ dtype: int64</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(level_0                2484
- index                  2484
- id                     2484
- keyword                 219
- location               1201
- text                   2440
+<pre>(level_0                2450
+ index                  2450
+ id                     2450
+ keyword                 220
+ location               1197
+ text                   2418
  target                    1
- text_simple            2181
- text_spacy             2439
- text_trigram           2439
- text_trigram_simple    2181
- text_trigram_spacy     2438
+ text_simple            2130
+ text_spacy             2417
+ text_trigram           2417
+ text_trigram_simple    2130
+ text_trigram_spacy     2416
  dtype: int64,
- level_0                3225
- index                  3225
- id                     3225
+ level_0                3259
+ index                  3259
+ id                     3259
  keyword                 216
- location               1657
- text                   3210
+ location               1668
+ text                   3239
  target                    1
- text_simple            3047
- text_spacy             3209
- text_trigram           3210
- text_trigram_simple    3047
- text_trigram_spacy     3209
+ text_simple            3069
+ text_spacy             3237
+ text_trigram           3239
+ text_trigram_simple    3069
+ text_trigram_spacy     3237
  dtype: int64)</pre>
 </div>
 
@@ -1476,7 +1476,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 </p>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
-    <strong>Note: </strong>We’re using the unprocessed tweets in the <code>data[&amp;#8217;text&amp;#8217;]</code> column this time around. We’ll be using the other two preprocessed tweets in a bit!
+    <strong>Note: </strong>We’re using the unprocessed tweets in the <code>text</code> column of our data this time around. We’ll be using the other two preprocessed tweets in a bit!
 </div>
 
 </div>
@@ -1791,7 +1791,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">valid</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">valid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -1840,753 +1840,78 @@ We'll start by analyzing the unprocessed tweets.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>5830</td>
-      <td>8329</td>
-      <td>rubble</td>
-      <td>West Africa</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>1</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
+      <td>3068</td>
+      <td>4402</td>
+      <td>electrocute</td>
+      <td>NaN</td>
+      <td>Kids got Disney version of the game Operation ...</td>
       <td>0</td>
+      <td>kids got disney version of the game operation ...</td>
+      <td>kid get disney version game operation 2 aa bat...</td>
+      <td>Kids got Disney version of the game Operation ...</td>
+      <td>kids got disney version of the game operation ...</td>
+      <td>kid get disney version game operation 2 aa bat...</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2548</td>
-      <td>3656</td>
-      <td>destroy</td>
-      <td>Honduras</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>0</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>0</td>
+      <td>3148</td>
+      <td>4522</td>
+      <td>emergency</td>
+      <td>Indianapolis, IN</td>
+      <td>UPDATE: Indiana State Police reopening I-65 ne...</td>
+      <td>1</td>
+      <td>update indiana state police reopening i 65 nea...</td>
+      <td>update : indiana state police reopen i-65 near...</td>
+      <td>UPDATE: Indiana State Police reopening I-65 ne...</td>
+      <td>update indiana state police reopening i 65 nea...</td>
+      <td>update : indiana state police reopen i-65 near...</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2644</td>
-      <td>3796</td>
-      <td>destruction</td>
-      <td>NaN</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>1</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
+      <td>3139</td>
+      <td>4511</td>
+      <td>emergency</td>
+      <td>Phoenix</td>
+      <td>God forbid anyone in my family knows how to an...</td>
+      <td>0</td>
+      <td>god forbid anyone in my family knows how to an...</td>
+      <td>god forbid family know answer phone . need new...</td>
+      <td>God forbid anyone in my family knows how to an...</td>
+      <td>god forbid anyone in my family knows how to an...</td>
+      <td>god forbid family know answer phone . need new...</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>6078</td>
-      <td>8684</td>
-      <td>sinkhole</td>
-      <td>Haddonfield, NJ</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>1</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
+      <td>7485</td>
+      <td>10707</td>
+      <td>wreck</td>
+      <td>Alabama, USA</td>
+      <td>First wreck today. So so glad me and mom are o...</td>
+      <td>0</td>
+      <td>first wreck today so so glad me and mom are ok...</td>
+      <td>wreck today . glad mom okay . lot bad . happy ...</td>
+      <td>First wreck today. So so glad me and mom are o...</td>
+      <td>first wreck today so so glad me and mom are ok...</td>
+      <td>wreck today . glad mom okay . lot bad . happy ...</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6531</td>
-      <td>9342</td>
-      <td>survived</td>
-      <td>London</td>
-      <td>Survived another tube strike with the last per...</td>
+      <td>6023</td>
+      <td>8608</td>
+      <td>seismic</td>
+      <td>Somalia</td>
+      <td>Exploration takes seismic shift in Gabon to So...</td>
       <td>0</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>7168</td>
-      <td>10272</td>
-      <td>war%20zone</td>
-      <td>We're All Mad Here</td>
-      <td>Packing for CT aka my room looks like a war zone</td>
+      <td>exploration takes seismic shift in gabon to so...</td>
+      <td>exploration take seismic shift gabon somalia -...</td>
+      <td>Exploration takes seismic shift in Gabon to So...</td>
+      <td>exploration takes seismic shift in gabon to so...</td>
+      <td>exploration take seismic shift gabon somalia -...</td>
       <td>0</td>
-      <td>packing for ct aka my room looks like a war zone</td>
-      <td>pack ct aka room look like war zone</td>
-      <td>Packing for CT aka my room looks like a war zone</td>
-      <td>packing for ct aka my room looks_like a war zone</td>
-      <td>pack ct aka room look_like war zone</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>4140</td>
-      <td>5887</td>
-      <td>harm</td>
-      <td>NaN</td>
-      <td>sticks and stones may break my bones\nbut word...</td>
-      <td>0</td>
-      <td>sticks and stones may break my bones but words...</td>
-      <td>stick stone break bone \n word harm</td>
-      <td>sticks and stones may break my bones but words...</td>
-      <td>sticks and stones may break my bones but words...</td>
-      <td>stick stone break bone word harm</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>4999</td>
-      <td>7131</td>
-      <td>military</td>
-      <td>Virginia, USA</td>
-      <td>@TeamHendrick @TeamHendrick @RIRInsider Finger...</td>
-      <td>0</td>
-      <td>teamhendrick teamhendrick ririnsider fingers c...</td>
-      <td>@teamhendrick @teamhendrick @ririnsid finger c...</td>
-      <td>@TeamHendrick @TeamHendrick @RIRInsider Finger...</td>
-      <td>teamhendrick teamhendrick ririnsider fingers c...</td>
-      <td>@teamhendrick @teamhendrick @ririnsid finger c...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>270</td>
-      <td>393</td>
-      <td>annihilation</td>
-      <td>BIG D  HOUSTON/BOSTON/DENVER</td>
-      <td>U.S National Park Services Tonto National Fore...</td>
-      <td>0</td>
-      <td>u s national park services tonto national fore...</td>
-      <td>u.s national park services tonto national fore...</td>
-      <td>U.S National Park Services Tonto National Fore...</td>
-      <td>u_s national park services tonto national fore...</td>
-      <td>u.s national park services tonto national fore...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>3163</td>
-      <td>4541</td>
-      <td>emergency</td>
-      <td>Renfrew, Scotland</td>
-      <td>@batfanuk we enjoyed the show today. Great fun...</td>
-      <td>0</td>
-      <td>batfanuk we enjoyed the show today great fun t...</td>
-      <td>@batfanuk enjoy today . great fun . emergency ...</td>
-      <td>@batfanuk we enjoyed the show today. Great fun...</td>
-      <td>batfanuk we enjoyed the show today great fun t...</td>
-      <td>@batfanuk enjoy today . great fun . emergency ...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>5775</td>
-      <td>8242</td>
-      <td>rioting</td>
-      <td>hertfordshire.</td>
-      <td>But the government will not care. Police will ...</td>
-      <td>1</td>
-      <td>but the government will not care police will s...</td>
-      <td>government care . police stop rioting eventual...</td>
-      <td>But the government will not care. Police will ...</td>
-      <td>but the government will not care police will s...</td>
-      <td>government care . police stop rioting eventual...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>6850</td>
-      <td>9818</td>
-      <td>trauma</td>
-      <td>NaN</td>
-      <td>@crazyindapeg @VETS78734 completely understand...</td>
-      <td>0</td>
-      <td>crazyindapeg vets78734 completely understandab...</td>
-      <td>@crazyindapeg @vets78734 completely understand...</td>
-      <td>@crazyindapeg @VETS78734 completely understand...</td>
-      <td>crazyindapeg vets78734 completely understandab...</td>
-      <td>@crazyindapeg @vets78734 completely understand...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>7241</td>
-      <td>10369</td>
-      <td>weapons</td>
-      <td>NaN</td>
-      <td>#bigbrother #ch4 The X-37b's big brother revea...</td>
-      <td>0</td>
-      <td>bigbrother ch4 the x 37b s big brother reveale...</td>
-      <td># bigbrother # ch4 x-37b big brother reveal : ...</td>
-      <td>#bigbrother #ch4 The X-37b's big brother revea...</td>
-      <td>bigbrother ch4 the x 37b s big brother reveale...</td>
-      <td># bigbrother # ch4 x-37b big brother reveal : ...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>525</td>
-      <td>759</td>
-      <td>avalanche</td>
-      <td>UK</td>
-      <td>Musician Kalle Mattson Recreates 34 Classic Al...</td>
-      <td>0</td>
-      <td>musician kalle mattson recreates 34 classic al...</td>
-      <td>musician kalle mattson recreate 34 classic alb...</td>
-      <td>Musician Kalle Mattson Recreates 34 Classic Al...</td>
-      <td>musician kalle mattson recreates 34 classic al...</td>
-      <td>musician kalle mattson recreate 34 classic alb...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>5015</td>
-      <td>7154</td>
-      <td>mudslide</td>
-      <td>Wales</td>
-      <td>Hope Dorett's 'mudslide' cake wins?? #GBBO</td>
-      <td>0</td>
-      <td>hope dorett s mudslide cake wins gbbo</td>
-      <td>hope dorett ' mudslide ' cake win ? ? # gbbo</td>
-      <td>Hope Dorett's 'mudslide' cake wins?? #GBBO</td>
-      <td>hope dorett s mudslide cake wins gbbo</td>
-      <td>hope dorett ' mudslide ' cake win ?_? # gbbo</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>3639</td>
-      <td>5188</td>
-      <td>fatalities</td>
-      <td>NaN</td>
-      <td>Mortal Kombat X: All Fatalities On Meat Predat...</td>
-      <td>0</td>
-      <td>mortal kombat x all fatalities on meat predator</td>
-      <td>mortal kombat x : fatality meat predator . \n ...</td>
-      <td>Mortal Kombat X: All Fatalities On Meat Predat...</td>
-      <td>mortal kombat x all fatalities on meat predator</td>
-      <td>mortal kombat x : fatality meat predator . htt...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>4264</td>
-      <td>6058</td>
-      <td>heat%20wave</td>
-      <td>State College, PA</td>
-      <td>Must Read Forecast! Longest Streak of Triple-D...</td>
-      <td>1</td>
-      <td>must read forecast longest streak of triple di...</td>
-      <td>read forecast ! long streak triple - digit hea...</td>
-      <td>Must Read Forecast! Longest Streak of Triple-D...</td>
-      <td>must read forecast longest streak of triple di...</td>
-      <td>read forecast ! long streak triple - digit hea...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>3218</td>
-      <td>4617</td>
-      <td>emergency%20services</td>
-      <td>Henderson, Nevada</td>
-      <td>Apply now to work for Dignity Health as #RN #E...</td>
-      <td>0</td>
-      <td>apply now to work for dignity health as rn eme...</td>
-      <td>apply work dignity health # rn # emergency ser...</td>
-      <td>Apply now to work for Dignity Health as #RN #E...</td>
-      <td>apply now to work for dignity health as rn eme...</td>
-      <td>apply work dignity health # rn # emergency ser...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>2227</td>
-      <td>3185</td>
-      <td>deluge</td>
-      <td>NaN</td>
-      <td>The f$&amp;amp;@ing things I do for #GISHWHES Just...</td>
-      <td>0</td>
-      <td>the f amp ing things i do for gishwhes just go...</td>
-      <td>f$&amp;amp;@ing thing # gishwhe get soak deluge go...</td>
-      <td>The f$&amp;amp;@ing things I do for #GISHWHES Just...</td>
-      <td>the f amp ing things i do for gishwhes just go...</td>
-      <td>f$&amp;amp;@ing thing # gishwhe get soak deluge go...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>1163</td>
-      <td>1675</td>
-      <td>bridge%20collapse</td>
-      <td>NaN</td>
-      <td>Sioux City Fire Officials Believe Bridge Colla...</td>
-      <td>1</td>
-      <td>sioux city fire officials believe bridge colla...</td>
-      <td>sioux city fire official believe bridge collap...</td>
-      <td>Sioux City Fire Officials Believe Bridge Colla...</td>
-      <td>sioux city fire officials believe bridge colla...</td>
-      <td>sioux city fire official believe bridge collap...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>4177</td>
-      <td>5933</td>
-      <td>harm</td>
-      <td>Los Angeles, California</td>
-      <td>Quality Metrics Penalties May Harm Patient Car...</td>
-      <td>0</td>
-      <td>quality metrics penalties may harm patient car...</td>
-      <td>quality metric penalty harm patient care pcps ...</td>
-      <td>Quality Metrics Penalties May Harm Patient Car...</td>
-      <td>quality metrics penalties may harm patient car...</td>
-      <td>quality metric penalty harm patient care pcps ...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>2433</td>
-      <td>3495</td>
-      <td>derailed</td>
-      <td>NYC</td>
-      <td>Sad that biker beatdown derailed his pro-democ...</td>
-      <td>1</td>
-      <td>sad that biker beatdown derailed his pro democ...</td>
-      <td>sad biker beatdown derail pro - democracy work...</td>
-      <td>Sad that biker beatdown derailed his pro-democ...</td>
-      <td>sad that biker beatdown derailed his pro democ...</td>
-      <td>sad biker beatdown derail pro - democracy work...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>938</td>
-      <td>1356</td>
-      <td>blown%20up</td>
-      <td>kisumu</td>
-      <td>LONER DIARIES.\n\nThe patterns  on the sand\nM...</td>
-      <td>0</td>
-      <td>loner diaries the patterns on the sand may hav...</td>
-      <td>loner diary . \n\n pattern   sand \n blow away...</td>
-      <td>LONER DIARIES. The patterns on the sand May ha...</td>
-      <td>loner diaries the patterns on the sand may_hav...</td>
-      <td>loner diary . pattern sand blow away . photo t...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>1837</td>
-      <td>2642</td>
-      <td>crashed</td>
-      <td>too far</td>
-      <td>He was only .4 of a second faster than me and ...</td>
-      <td>0</td>
-      <td>he was only 4 of a second faster than me and i...</td>
-      <td>.4 second fast overtook twice ( crash ) tru lu...</td>
-      <td>He was only .4 of a second faster than me and ...</td>
-      <td>he was only 4 of a second faster than me and i...</td>
-      <td>.4 second fast overtook twice ( crash ) tru lu...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>526</td>
-      <td>761</td>
-      <td>avalanche</td>
-      <td>London, Kent &amp; SE England.</td>
-      <td>Beautiful Sweet Avalanche Faith and Akito rose...</td>
-      <td>0</td>
-      <td>beautiful sweet avalanche faith and akito rose...</td>
-      <td>beautiful sweet avalanche faith akito rose lot...</td>
-      <td>Beautiful Sweet Avalanche Faith and Akito rose...</td>
-      <td>beautiful sweet avalanche faith and akito rose...</td>
-      <td>beautiful sweet avalanche faith akito rose lot...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>3575</td>
-      <td>5107</td>
-      <td>famine</td>
-      <td>Chatham, IL</td>
-      <td>Images of Famine ÛÒ Hope In Christ - A blog o...</td>
-      <td>1</td>
-      <td>images of famine ûò hope in christ a blog on w...</td>
-      <td>image famine ûò hope christ - blog happen for...</td>
-      <td>Images of Famine ÛÒ Hope In Christ - A blog o...</td>
-      <td>images of famine ûò hope in christ a blog on w...</td>
-      <td>image famine ûò hope christ - blog happen for...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>3546</td>
-      <td>5069</td>
-      <td>famine</td>
-      <td>PanamÌÁ</td>
-      <td>Top 3:\n* Turn on the Darkness\n* King Redeem ...</td>
-      <td>0</td>
-      <td>top 3 turn on the darkness king redeem queen s...</td>
-      <td>3 : \n * turn darkness \n * king redeem - quee...</td>
-      <td>Top 3: * Turn on the Darkness * King Redeem - ...</td>
-      <td>top 3 turn on the darkness king redeem queen s...</td>
-      <td>3 : * turn darkness * king redeem - queen sere...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>6727</td>
-      <td>9640</td>
-      <td>thunderstorm</td>
-      <td>NaN</td>
-      <td>Falling asleep to the sounds to thousands of R...</td>
-      <td>0</td>
-      <td>falling asleep to the sounds to thousands of r...</td>
-      <td>fall asleep sound thousand river plate fan sta...</td>
-      <td>Falling asleep to the sounds to thousands of R...</td>
-      <td>falling asleep to the sounds to thousands of r...</td>
-      <td>fall asleep sound thousand river plate fan sta...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>4123</td>
-      <td>5861</td>
-      <td>hailstorm</td>
-      <td>NaN</td>
-      <td>Summer heat drives bobcats to Calgary backyard...</td>
-      <td>1</td>
-      <td>summer heat drives bobcats to calgary backyards 3</td>
-      <td>summer heat drive bobcat calgary backyard ~ 3 ...</td>
-      <td>Summer heat drives bobcats to Calgary backyard...</td>
-      <td>summer heat drives bobcats to calgary backyards 3</td>
-      <td>summer heat drive bobcat calgary backyard ~ 3 ...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>4992</td>
-      <td>7122</td>
-      <td>military</td>
-      <td>NaN</td>
-      <td>Online infantryman experimental military train...</td>
-      <td>0</td>
-      <td>online infantryman experimental military train...</td>
-      <td>online infantryman experimental military train...</td>
-      <td>Online infantryman experimental military train...</td>
-      <td>online infantryman experimental military train...</td>
-      <td>online infantryman experimental military train...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>5685</td>
-      <td>8112</td>
-      <td>rescued</td>
-      <td>NaN</td>
-      <td>I liked a @YouTube video http://t.co/45TWHJ0l6...</td>
-      <td>0</td>
-      <td>i liked a youtube video</td>
-      <td>like @youtube video http://t.co/45twhj0l6 m ro...</td>
-      <td>I_liked_a_@YouTube video http://t.co/45TWHJ0l6...</td>
-      <td>i_liked_a_youtube video</td>
-      <td>like_@youtube_video http://t.co/45twhj0l6 m ro...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>3450</td>
-      <td>4934</td>
-      <td>exploded</td>
-      <td>USA</td>
-      <td>If you told me ten years ago that I'd be seein...</td>
-      <td>0</td>
-      <td>if you told me ten years ago that i d be seein...</td>
-      <td>tell year ago see anime big screen ... ... pro...</td>
-      <td>If you told me ten years ago that I'd be seein...</td>
-      <td>if_you told me ten years ago that i d be seein...</td>
-      <td>tell year ago see anime big screen ... ... pro...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>2045</td>
-      <td>2935</td>
-      <td>danger</td>
-      <td>Atlanta Georgia</td>
-      <td>@RemainOnTop #FETTILOOTCH IS #SLANGLUCCI OPPRE...</td>
-      <td>0</td>
-      <td>remainontop fettilootch is slanglucci oppressi...</td>
-      <td>@remainontop # fettilootch # slanglucci oppres...</td>
-      <td>@RemainOnTop #FETTILOOTCH IS #SLANGLUCCI OPPRE...</td>
-      <td>remainontop fettilootch is slanglucci oppressi...</td>
-      <td>@remainontop # fettilootch # slanglucci oppres...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>436</td>
-      <td>633</td>
-      <td>arsonist</td>
-      <td>snapchat // fvck_casper</td>
-      <td>@local_arsonist I guess u can say that it's ju...</td>
-      <td>0</td>
-      <td>local_arsonist i guess u can say that it s jus...</td>
-      <td>@local_arsonist guess u shit think</td>
-      <td>@local_arsonist I guess u can say that it's ju...</td>
-      <td>local_arsonist i guess u can say that it_s jus...</td>
-      <td>@local_arsonist guess u shit think</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>3515</td>
-      <td>5025</td>
-      <td>eyewitness</td>
-      <td>NaN</td>
-      <td>Interesting approach but doesn't replace Eyewi...</td>
-      <td>1</td>
-      <td>interesting approach but doesn t replace eyewi...</td>
-      <td>interesting approach replace eyewitness video ...</td>
-      <td>Interesting approach but doesn't replace Eyewi...</td>
-      <td>interesting approach but doesn t replace eyewi...</td>
-      <td>interesting approach replace eyewitness video ...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>4419</td>
-      <td>6282</td>
-      <td>hijacking</td>
-      <td>NaN</td>
-      <td>Mom is hijacking my account to earn MCR STATUS...</td>
-      <td>0</td>
-      <td>mom is hijacking my account to earn mcr status...</td>
-      <td>mom hijack account earn mcr status ! ! !   acc...</td>
-      <td>Mom is hijacking my account to earn MCR STATUS...</td>
-      <td>mom is hijacking my account to earn mcr status...</td>
-      <td>mom hijack account earn mcr status !_!_! accou...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>3945</td>
-      <td>5609</td>
-      <td>flood</td>
-      <td>New York</td>
-      <td>12' 72W CREE LED Work Light Bar Alloy Spot Flo...</td>
-      <td>0</td>
-      <td>12 72w cree led work light bar alloy spot floo...</td>
-      <td>12 ' 72w cree lead work light bar alloy spot f...</td>
-      <td>12' 72W CREE LED Work Light Bar Alloy Spot Flo...</td>
-      <td>12 72w cree led work light bar alloy spot floo...</td>
-      <td>12 ' 72w cree lead work light bar alloy spot f...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>1142</td>
-      <td>1646</td>
-      <td>bombing</td>
-      <td>NaN</td>
-      <td>The cryptic words that guided pilots on the Hi...</td>
-      <td>1</td>
-      <td>the cryptic words that guided pilots on the hi...</td>
-      <td>cryptic word guide pilot hiroshima bombing mis...</td>
-      <td>The cryptic words that guided pilots on the Hi...</td>
-      <td>the cryptic words that guided pilots on the hi...</td>
-      <td>cryptic word guide pilot hiroshima bombing mis...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>3401</td>
-      <td>4869</td>
-      <td>explode</td>
-      <td>Williamsburg, VA</td>
-      <td>Housing Starts Explode to NewåÊHeights http://...</td>
-      <td>0</td>
-      <td>housing starts explode to newåêheights</td>
-      <td>housing start explode newåêheight http://t.co/...</td>
-      <td>Housing Starts Explode to NewåÊHeights http://...</td>
-      <td>housing starts explode to newåêheights</td>
-      <td>housing start explode newåêheight http://t.co/...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>1628</td>
-      <td>2351</td>
-      <td>collapse</td>
-      <td>Worldwide.</td>
-      <td>åÈMGN-AFRICAå¨ pin:263789F4 åÈ Correction: Ten...</td>
-      <td>0</td>
-      <td>åèmgn africaå pin 263789f4 åè correction tent ...</td>
-      <td>åèmgn - africaå¨ pin:263789f4 åè correction : ...</td>
-      <td>åÈMGN-AFRICAå¨ pin:263789F4 åÈ Correction: Ten...</td>
-      <td>åèmgn africaå pin 263789f4 åè correction tent ...</td>
-      <td>åèmgn - africaå¨ pin:263789f4 åè correction : ...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>1131</td>
-      <td>1631</td>
-      <td>bombing</td>
-      <td>NaN</td>
-      <td>The United Kingdom and France are bombing Daes...</td>
-      <td>1</td>
-      <td>the united kingdom and france are bombing daes...</td>
-      <td>united kingdom france bomb daesh syria - volta...</td>
-      <td>The United Kingdom and France are bombing Daes...</td>
-      <td>the united kingdom and france are bombing daes...</td>
-      <td>united kingdom france bomb daesh syria - volta...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>4869</td>
-      <td>6932</td>
-      <td>mass%20murderer</td>
-      <td>NaN</td>
-      <td>Another White mass murderer. Thank God I live ...</td>
-      <td>1</td>
-      <td>another white mass murderer thank god i live i...</td>
-      <td>white mass murderer . thank god live californi...</td>
-      <td>Another White mass murderer. Thank God I live ...</td>
-      <td>another white mass_murderer thank god i live i...</td>
-      <td>white mass murderer . thank god live californi...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>1532</td>
-      <td>2214</td>
-      <td>chemical%20emergency</td>
-      <td>London</td>
-      <td>.@david_cameron Stop upsetting this bee! Liste...</td>
-      <td>0</td>
-      <td>david_cameron stop upsetting this bee listen t...</td>
-      <td>.@david_cameron stop upset bee ! listen scienc...</td>
-      <td>.@david_cameron Stop upsetting this bee! Liste...</td>
-      <td>david_cameron stop upsetting this bee listen t...</td>
-      <td>.@david_cameron stop upset bee ! listen scienc...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>537</td>
-      <td>782</td>
-      <td>avalanche</td>
-      <td>Buy Give Me My Money</td>
-      <td>Great one time deal on all Avalanche music and...</td>
-      <td>0</td>
-      <td>great one time deal on all avalanche music and...</td>
-      <td>great time deal avalanche music purchase neal ...</td>
-      <td>Great one time deal on all Avalanche music and...</td>
-      <td>great one time deal on all avalanche music and...</td>
-      <td>great time deal avalanche music purchase neal ...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>5164</td>
-      <td>7365</td>
-      <td>obliterate</td>
-      <td>NEWCASTLE</td>
-      <td>@SkyNews how is this scum still alive oblitera...</td>
-      <td>0</td>
-      <td>skynews how is this scum still alive obliterat...</td>
-      <td>@skynews scum alive obliterate cancer</td>
-      <td>@SkyNews how is this scum still alive oblitera...</td>
-      <td>skynews how is this scum still alive obliterat...</td>
-      <td>@skynews scum alive obliterate cancer</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>1057</td>
-      <td>1526</td>
-      <td>body%20bags</td>
-      <td>Speaking the Truth in Love</td>
-      <td>Fairfax investigating firefighter over Faceboo...</td>
-      <td>0</td>
-      <td>fairfax investigating firefighter over faceboo...</td>
-      <td>fairfax investigate firefighter facebook post ...</td>
-      <td>Fairfax investigating firefighter over Faceboo...</td>
-      <td>fairfax investigating firefighter over faceboo...</td>
-      <td>fairfax investigate firefighter facebook post ...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>3844</td>
-      <td>5469</td>
-      <td>flames</td>
-      <td>Freeport Ny</td>
-      <td>Just added some more fire to the flames for Sa...</td>
-      <td>0</td>
-      <td>just added some more fire to the flames for sa...</td>
-      <td>add fire flame saturday ! rick wonder spin gue...</td>
-      <td>Just added some more fire to the flames for Sa...</td>
-      <td>just added some more fire to the flames for sa...</td>
-      <td>add fire flame saturday ! rick wonder spin gue...</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>3471</td>
-      <td>4966</td>
-      <td>explosion</td>
-      <td>NaN</td>
-      <td>Report: Corey Brewer was drug tested after 51-...</td>
-      <td>1</td>
-      <td>report corey brewer was drug tested after 51 p...</td>
-      <td>report : corey brewer drug test 51-point explo...</td>
-      <td>Report: Corey Brewer was drug tested after 51-...</td>
-      <td>report corey brewer was drug tested after 51 p...</td>
-      <td>report : corey brewer drug test 51-point explo...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>3383</td>
-      <td>4845</td>
-      <td>evacuation</td>
-      <td>sydney, australia</td>
-      <td>my school just put the evacuation alarms on ac...</td>
-      <td>0</td>
-      <td>my school just put the evacuation alarms on ac...</td>
-      <td>school evacuation alarm accidently 2 different...</td>
-      <td>my school just put the evacuation alarms on ac...</td>
-      <td>my school just put the evacuation alarms on ac...</td>
-      <td>school evacuation alarm accidently 2 different...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>5624</td>
-      <td>8023</td>
-      <td>refugees</td>
-      <td>EspaÌ±a</td>
-      <td>@ViralSpell: 'Couple spend wedding day feeding...</td>
-      <td>0</td>
-      <td>viralspell couple spend wedding day feeding 40...</td>
-      <td>@viralspell : ' couple spend wedding day feed ...</td>
-      <td>@ViralSpell: 'Couple spend wedding day feeding...</td>
-      <td>viralspell couple spend wedding day feeding 40...</td>
-      <td>@viralspell : ' couple spend wedding day feed ...</td>
-      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -2634,7 +1959,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.6207983193277311, 0.48428571428571426)</pre>
+<pre>(0.6407563025210085, 0.5302197802197802)</pre>
 </div>
 
 </div>
@@ -2648,7 +1973,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>62.08%</code> accuracy! That's not too shabby for just looking at word frequencies...</p>
+<p><code>64.08%</code> accuracy! That's not too shabby for just looking at word frequencies...</p>
 <p>But what happens if we calculate tweet similarities using TF-IDF again, but this time using the preprocessed data that we prepared in the last section?</p>
 <p>Let's start by seeing how our scores improve with the "simply" cleaned tweets.</p>
 
@@ -2728,73 +2053,73 @@ We'll start by analyzing the unprocessed tweets.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>5830</td>
-      <td>8329</td>
-      <td>rubble</td>
-      <td>West Africa</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>1</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
+      <td>3068</td>
+      <td>4402</td>
+      <td>electrocute</td>
+      <td>NaN</td>
+      <td>Kids got Disney version of the game Operation ...</td>
+      <td>0</td>
+      <td>kids got disney version of the game operation ...</td>
+      <td>kid get disney version game operation 2 aa bat...</td>
+      <td>Kids got Disney version of the game Operation ...</td>
+      <td>kids got disney version of the game operation ...</td>
+      <td>kid get disney version game operation 2 aa bat...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2548</td>
-      <td>3656</td>
-      <td>destroy</td>
-      <td>Honduras</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>0</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
+      <td>3148</td>
+      <td>4522</td>
+      <td>emergency</td>
+      <td>Indianapolis, IN</td>
+      <td>UPDATE: Indiana State Police reopening I-65 ne...</td>
+      <td>1</td>
+      <td>update indiana state police reopening i 65 nea...</td>
+      <td>update : indiana state police reopen i-65 near...</td>
+      <td>UPDATE: Indiana State Police reopening I-65 ne...</td>
+      <td>update indiana state police reopening i 65 nea...</td>
+      <td>update : indiana state police reopen i-65 near...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2644</td>
-      <td>3796</td>
-      <td>destruction</td>
-      <td>NaN</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>1</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
+      <td>3139</td>
+      <td>4511</td>
+      <td>emergency</td>
+      <td>Phoenix</td>
+      <td>God forbid anyone in my family knows how to an...</td>
+      <td>0</td>
+      <td>god forbid anyone in my family knows how to an...</td>
+      <td>god forbid family know answer phone . need new...</td>
+      <td>God forbid anyone in my family knows how to an...</td>
+      <td>god forbid anyone in my family knows how to an...</td>
+      <td>god forbid family know answer phone . need new...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>6078</td>
-      <td>8684</td>
-      <td>sinkhole</td>
-      <td>Haddonfield, NJ</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>1</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
+      <td>7485</td>
+      <td>10707</td>
+      <td>wreck</td>
+      <td>Alabama, USA</td>
+      <td>First wreck today. So so glad me and mom are o...</td>
+      <td>0</td>
+      <td>first wreck today so so glad me and mom are ok...</td>
+      <td>wreck today . glad mom okay . lot bad . happy ...</td>
+      <td>First wreck today. So so glad me and mom are o...</td>
+      <td>first wreck today so so glad me and mom are ok...</td>
+      <td>wreck today . glad mom okay . lot bad . happy ...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6531</td>
-      <td>9342</td>
-      <td>survived</td>
-      <td>London</td>
-      <td>Survived another tube strike with the last per...</td>
+      <td>6023</td>
+      <td>8608</td>
+      <td>seismic</td>
+      <td>Somalia</td>
+      <td>Exploration takes seismic shift in Gabon to So...</td>
       <td>0</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
+      <td>exploration takes seismic shift in gabon to so...</td>
+      <td>exploration take seismic shift gabon somalia -...</td>
+      <td>Exploration takes seismic shift in Gabon to So...</td>
+      <td>exploration takes seismic shift in gabon to so...</td>
+      <td>exploration take seismic shift gabon somalia -...</td>
     </tr>
   </tbody>
 </table>
@@ -2945,7 +2270,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.6743697478991597, 0.5558739255014327)</pre>
+<pre>(0.6659663865546218, 0.5702702702702702)</pre>
 </div>
 
 </div>
@@ -2959,7 +2284,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>67.44%</code> accuracy; we've gotten better! Notice that our F1 score has gone up also, from <code>0.48</code> to <code>0.56</code>.</p>
+<p><code>66.60%</code> accuracy; we've gotten better! Notice that our F1 score has gone up also, from <code>0.53</code> to <code>0.57</code>.</p>
 <p>For the last of the TF-IDF similarities, let's see how things go if we use the tweets that were preprocessed with SpaCy:</p>
 
 </div>
@@ -2990,129 +2315,9 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">valid</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'prediction'</span><span class="p">])</span>
-<span class="n">valid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>index</th>
-      <th>id</th>
-      <th>keyword</th>
-      <th>location</th>
-      <th>text</th>
-      <th>target</th>
-      <th>text_simple</th>
-      <th>text_spacy</th>
-      <th>text_trigram</th>
-      <th>text_trigram_simple</th>
-      <th>text_trigram_spacy</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5830</td>
-      <td>8329</td>
-      <td>rubble</td>
-      <td>West Africa</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>1</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2548</td>
-      <td>3656</td>
-      <td>destroy</td>
-      <td>Honduras</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>0</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2644</td>
-      <td>3796</td>
-      <td>destruction</td>
-      <td>NaN</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>1</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>6078</td>
-      <td>8684</td>
-      <td>sinkhole</td>
-      <td>Haddonfield, NJ</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>1</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>6531</td>
-      <td>9342</td>
-      <td>survived</td>
-      <td>London</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>0</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -3246,7 +2451,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.6559873949579832, 0.4988523335883704)</pre>
+<pre>(0.6402310924369747, 0.4891871737509322)</pre>
 </div>
 
 </div>
@@ -3260,8 +2465,8 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>With SpaCy lemmatization and removal of stop words, our accuracy and F1 scores have ended up between the unprocessed and "simple" datasets, with an accuracy of <code>65.60%</code> and an F1 score of <code>0.50</code>.</p>
-<p>So it seems of the three preprocessing techniques used in a TF-IDF model, in this case, "simple" cleaning worked the best with an accuracy of <code>67.44</code> and an F1 score of <code>0.56</code>.</p>
+<p>With SpaCy lemmatization and removal of stop words, we've actually gotten the worst results of the three datasets, with an accuracy of <code>64.02%</code> and an F1 score of <code>0.49</code>.</p>
+<p>So it seems of the three preprocessing techniques used in a TF-IDF model, in this case, "simple" cleaning worked the best with an accuracy of <code>66.60</code> and an F1 score of <code>0.57</code>.</p>
 <p>Let's now move forward with Word2Vec.</p>
 
 </div>
@@ -3432,12 +2637,12 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Below, we'll use <code>min_count=5</code> as one of our <a href="https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning">hyperparameters</a>) in our Word2Vec model, so let's replace all of the words in all three of our preprocessed tweet columns (<code>text_trigram</code>, <code>text_trigram_simple</code>, and <code>text_trigram_spacy</code>) in each DataFrame with <code>'UNK'</code>.
 </p>
-<div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
-    <strong>Note: </strong>Remember! We’re using the trigrams we built in the Data Augmentation section. If you skipped it, go back now!
+<div class="flash flash-warn">
+    <svg class="octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg>
+    <strong>Important: </strong>We’re using the tweets with trigrams that we built in the Data Augmentation section for our Word2Vec model. If you skipped it, go back now!
 </div>
 <div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
     <strong>Note: </strong>Normally this would happen during the initial preprocessing stage, allowing us to only need to call <code>replace_unknowns()</code> on our initial <code>data</code> DataFrame. Because we’re calling <code>replace_unknowns()</code> after we’ve already split our data into training and validation sets, we need to call the function on all of the DataFrames we’ve already created.
 </div>
 
@@ -3663,147 +2868,9 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">valid</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'prediction'</span><span class="p">])</span>
-<span class="n">valid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>index</th>
-      <th>id</th>
-      <th>keyword</th>
-      <th>location</th>
-      <th>text</th>
-      <th>target</th>
-      <th>text_simple</th>
-      <th>text_spacy</th>
-      <th>text_trigram</th>
-      <th>text_trigram_simple</th>
-      <th>text_trigram_spacy</th>
-      <th>text_count_5</th>
-      <th>text_simple_5</th>
-      <th>text_spacy_5</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5830</td>
-      <td>8329</td>
-      <td>rubble</td>
-      <td>West Africa</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>1</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>UNK china's stock market crash: are there gems...</td>
-      <td>UNK china s stock market crash are there gems ...</td>
-      <td># UNK : china stock market crash : gem rubble ...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2548</td>
-      <td>3656</td>
-      <td>destroy</td>
-      <td>Honduras</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>0</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>black UNK 3 UNK and destroy UNK UNK UNK UNK UN...</td>
-      <td>black UNK 3 UNK and destroy UNK UNK UNK UNK UNK</td>
-      <td>black UNK 3 UNK destroy UNK ! ( UNK UNK UNK UN...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2644</td>
-      <td>3796</td>
-      <td>destruction</td>
-      <td>NaN</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>1</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>so you have a new weapon that can cause UNK UNK</td>
-      <td>so you have a new weapon that can cause UNK UN...</td>
-      <td>new weapon cause UNK - UNK destruction .</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>6078</td>
-      <td>8684</td>
-      <td>sinkhole</td>
-      <td>Haddonfield, NJ</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>1</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>UNK sinkhole UNK road UNK whole UNK UNK</td>
-      <td>UNK sinkhole UNK road UNK whole UNK</td>
-      <td>UNK sinkhole close road swallow UNK UNK</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>6531</td>
-      <td>9342</td>
-      <td>survived</td>
-      <td>London</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>0</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>survived another UNK strike with the last pers...</td>
-      <td>survived another UNK strike with the last pers...</td>
-      <td>survive UNK strike person UNK UNK home . get w...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -3816,7 +2883,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <p>Initialize our Word2Vec model.
 </p>
 <div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
     <strong>Note: </strong>I’m splitting up the training of the model into three steps. See <a href="https://www.kaggle.com/pierremegret/gensim-word2vec-tutorial/comments">this notebook</a> for more details on why (and Word2Vec in general).
 </div>
 
@@ -3830,7 +2897,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">min_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sample</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">min_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sample</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -3901,7 +2968,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(2006980, 3383040)</pre>
+<pre>(2006344, 3383040)</pre>
 </div>
 
 </div>
@@ -3918,7 +2985,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <p>Now we normalize vectors in the vocaulary for consistency.
 </p>
 <div class="flash flash-warn">
-    <svg class="octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg>
+    <svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg>
     <strong>Important: </strong>You wouldn’t do this if you were going to train further down the line. See <a href="https://github.com/RaRe-Technologies/gensim/blob/develop/docs/notebooks/online_w2v_tutorial.ipynb">this notebook</a> for more information about expanding your model’s vocabulary.
 </div>
 
@@ -3981,9 +3048,9 @@ We'll start by analyzing the unprocessed tweets.</p>
 </ol>
 <p>This is exemplified below:
 </p>
-<div class="flash flash-warn">
-    <svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg>
-    <strong>Important: </strong>This model takes a little bit of time to train. It took almost 16 minutes on my machine.
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <strong>Note: </strong>This model takes a little bit of time to train. It took almost 16 minutes on my machine.
 </div>
 
 </div>
@@ -4036,7 +3103,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Runtime: 17.87487813234329 mins
+<pre>Runtime: 17.70957545042038 mins
 </pre>
 </div>
 </div>
@@ -4062,7 +3129,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">valid</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">valid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -4114,362 +3181,92 @@ We'll start by analyzing the unprocessed tweets.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>5830</td>
-      <td>8329</td>
-      <td>rubble</td>
-      <td>West Africa</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>1</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>UNK china's stock market crash: are there gems...</td>
-      <td>UNK china s stock market crash are there gems ...</td>
-      <td># UNK : china stock market crash : gem rubble ...</td>
+      <td>3068</td>
+      <td>4402</td>
+      <td>electrocute</td>
+      <td>NaN</td>
+      <td>Kids got Disney version of the game Operation ...</td>
+      <td>0</td>
+      <td>kids got disney version of the game operation ...</td>
+      <td>kid get disney version game operation 2 aa bat...</td>
+      <td>Kids got Disney version of the game Operation ...</td>
+      <td>kids got disney version of the game operation ...</td>
+      <td>kid get disney version game operation 2 aa bat...</td>
+      <td>UNK got UNK UNK of the game UNK only 2 UNK UNK...</td>
+      <td>kids got UNK UNK of the game UNK only 2 UNK UN...</td>
+      <td>kid get UNK version game UNK 2 UNK UNK ? UNK o...</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2548</td>
-      <td>3656</td>
-      <td>destroy</td>
-      <td>Honduras</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>0</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>black UNK 3 UNK and destroy UNK UNK UNK UNK UN...</td>
-      <td>black UNK 3 UNK and destroy UNK UNK UNK UNK UNK</td>
-      <td>black UNK 3 UNK destroy UNK ! ( UNK UNK UNK UN...</td>
+      <td>3148</td>
+      <td>4522</td>
+      <td>emergency</td>
+      <td>Indianapolis, IN</td>
+      <td>UPDATE: Indiana State Police reopening I-65 ne...</td>
+      <td>1</td>
+      <td>update indiana state police reopening i 65 nea...</td>
+      <td>update : indiana state police reopen i-65 near...</td>
+      <td>UPDATE: Indiana State Police reopening I-65 ne...</td>
+      <td>update indiana state police reopening i 65 nea...</td>
+      <td>update : indiana state police reopen i-65 near...</td>
+      <td>update: UNK state police UNK UNK near UNK UNK ...</td>
+      <td>update UNK state police UNK i UNK near UNK UNK...</td>
+      <td>update : UNK state police UNK UNK near UNK UNK...</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2644</td>
-      <td>3796</td>
-      <td>destruction</td>
-      <td>NaN</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>1</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>so you have a new weapon that can cause UNK UNK</td>
-      <td>so you have a new weapon that can cause UNK UN...</td>
-      <td>new weapon cause UNK - UNK destruction .</td>
+      <td>3139</td>
+      <td>4511</td>
+      <td>emergency</td>
+      <td>Phoenix</td>
+      <td>God forbid anyone in my family knows how to an...</td>
+      <td>0</td>
+      <td>god forbid anyone in my family knows how to an...</td>
+      <td>god forbid family know answer phone . need new...</td>
+      <td>God forbid anyone in my family knows how to an...</td>
+      <td>god forbid anyone in my family knows how to an...</td>
+      <td>god forbid family know answer phone . need new...</td>
+      <td>god UNK UNK in my family UNK how to UNK a UNK ...</td>
+      <td>god UNK UNK in my family UNK how to UNK a phon...</td>
+      <td>god UNK family know UNK phone . need new emerg...</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>6078</td>
-      <td>8684</td>
-      <td>sinkhole</td>
-      <td>Haddonfield, NJ</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>1</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>UNK sinkhole UNK road UNK whole UNK UNK</td>
-      <td>UNK sinkhole UNK road UNK whole UNK</td>
-      <td>UNK sinkhole close road swallow UNK UNK</td>
+      <td>7485</td>
+      <td>10707</td>
+      <td>wreck</td>
+      <td>Alabama, USA</td>
+      <td>First wreck today. So so glad me and mom are o...</td>
+      <td>0</td>
+      <td>first wreck today so so glad me and mom are ok...</td>
+      <td>wreck today . glad mom okay . lot bad . happy ...</td>
+      <td>First wreck today. So so glad me and mom are o...</td>
+      <td>first wreck today so so glad me and mom are ok...</td>
+      <td>wreck today . glad mom okay . lot bad . happy ...</td>
+      <td>first wreck UNK so so UNK me and UNK are UNK U...</td>
+      <td>first wreck today so so UNK me and UNK are UNK...</td>
+      <td>wreck today . UNK UNK UNK . lot bad . UNK UNK ...</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6531</td>
-      <td>9342</td>
-      <td>survived</td>
-      <td>London</td>
-      <td>Survived another tube strike with the last per...</td>
+      <td>6023</td>
+      <td>8608</td>
+      <td>seismic</td>
+      <td>Somalia</td>
+      <td>Exploration takes seismic shift in Gabon to So...</td>
       <td>0</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>survived another UNK strike with the last pers...</td>
-      <td>survived another UNK strike with the last pers...</td>
-      <td>survive UNK strike person UNK UNK home . get w...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>7168</td>
-      <td>10272</td>
-      <td>war%20zone</td>
-      <td>We're All Mad Here</td>
-      <td>Packing for CT aka my room looks like a war zone</td>
-      <td>0</td>
-      <td>packing for ct aka my room looks like a war zone</td>
-      <td>pack ct aka room look like war zone</td>
-      <td>Packing for CT aka my room looks like a war zone</td>
-      <td>packing for ct aka my room looks_like a war zone</td>
-      <td>pack ct aka room look_like war zone</td>
-      <td>UNK for UNK UNK my UNK looks like a war UNK</td>
-      <td>UNK for UNK UNK my UNK looks_like a war zone</td>
-      <td>UNK UNK UNK UNK look_like war zone</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>4140</td>
-      <td>5887</td>
-      <td>harm</td>
-      <td>NaN</td>
-      <td>sticks and stones may break my bones\nbut word...</td>
-      <td>0</td>
-      <td>sticks and stones may break my bones but words...</td>
-      <td>stick stone break bone \n word harm</td>
-      <td>sticks and stones may break my bones but words...</td>
-      <td>sticks and stones may break my bones but words...</td>
-      <td>stick stone break bone word harm</td>
-      <td>UNK and UNK may UNK my UNK but words will neve...</td>
-      <td>UNK and UNK may UNK my UNK but words will neve...</td>
-      <td>UNK UNK break UNK word harm</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>4999</td>
-      <td>7131</td>
-      <td>military</td>
-      <td>Virginia, USA</td>
-      <td>@TeamHendrick @TeamHendrick @RIRInsider Finger...</td>
-      <td>0</td>
-      <td>teamhendrick teamhendrick ririnsider fingers c...</td>
-      <td>@teamhendrick @teamhendrick @ririnsid finger c...</td>
-      <td>@TeamHendrick @TeamHendrick @RIRInsider Finger...</td>
-      <td>teamhendrick teamhendrick ririnsider fingers c...</td>
-      <td>@teamhendrick @teamhendrick @ririnsid finger c...</td>
-      <td>UNK UNK UNK UNK UNK that there will_be a UNK f...</td>
-      <td>UNK UNK UNK UNK UNK that there will_be a UNK f...</td>
-      <td>UNK UNK UNK UNK cross driver UNK military UNK ...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>270</td>
-      <td>393</td>
-      <td>annihilation</td>
-      <td>BIG D  HOUSTON/BOSTON/DENVER</td>
-      <td>U.S National Park Services Tonto National Fore...</td>
-      <td>0</td>
-      <td>u s national park services tonto national fore...</td>
-      <td>u.s national park services tonto national fore...</td>
-      <td>U.S National Park Services Tonto National Fore...</td>
-      <td>u_s national park services tonto national fore...</td>
-      <td>u.s national park services tonto national fore...</td>
-      <td>UNK national UNK services UNK national UNK sto...</td>
-      <td>u_s national UNK services UNK national forest ...</td>
-      <td>u.s national UNK UNK UNK national forest : sto...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>3163</td>
-      <td>4541</td>
-      <td>emergency</td>
-      <td>Renfrew, Scotland</td>
-      <td>@batfanuk we enjoyed the show today. Great fun...</td>
-      <td>0</td>
-      <td>batfanuk we enjoyed the show today great fun t...</td>
-      <td>@batfanuk enjoy today . great fun . emergency ...</td>
-      <td>@batfanuk we enjoyed the show today. Great fun...</td>
-      <td>batfanuk we enjoyed the show today great fun t...</td>
-      <td>@batfanuk enjoy today . great fun . emergency ...</td>
-      <td>UNK we UNK the show today. great UNK the emerg...</td>
-      <td>UNK we UNK the show today great fun the emerge...</td>
-      <td>UNK enjoy today . great fun . emergency UNK ev...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>5775</td>
-      <td>8242</td>
-      <td>rioting</td>
-      <td>hertfordshire.</td>
-      <td>But the government will not care. Police will ...</td>
-      <td>1</td>
-      <td>but the government will not care police will s...</td>
-      <td>government care . police stop rioting eventual...</td>
-      <td>But the government will not care. Police will ...</td>
-      <td>but the government will not care police will s...</td>
-      <td>government care . police stop rioting eventual...</td>
-      <td>but the government will not UNK police will st...</td>
-      <td>but the government will not UNK police will st...</td>
-      <td>government UNK . police stop rioting UNK UNK ....</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>6850</td>
-      <td>9818</td>
-      <td>trauma</td>
-      <td>NaN</td>
-      <td>@crazyindapeg @VETS78734 completely understand...</td>
-      <td>0</td>
-      <td>crazyindapeg vets78734 completely understandab...</td>
-      <td>@crazyindapeg @vets78734 completely understand...</td>
-      <td>@crazyindapeg @VETS78734 completely understand...</td>
-      <td>crazyindapeg vets78734 completely understandab...</td>
-      <td>@crazyindapeg @vets78734 completely understand...</td>
-      <td>UNK UNK UNK UNK UNK the trauma UNK</td>
-      <td>UNK UNK UNK UNK UNK the trauma UNK</td>
-      <td>UNK UNK UNK UNK UNK trauma # UNK</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>7241</td>
-      <td>10369</td>
-      <td>weapons</td>
-      <td>NaN</td>
-      <td>#bigbrother #ch4 The X-37b's big brother revea...</td>
-      <td>0</td>
-      <td>bigbrother ch4 the x 37b s big brother reveale...</td>
-      <td># bigbrother # ch4 x-37b big brother reveal : ...</td>
-      <td>#bigbrother #ch4 The X-37b's big brother revea...</td>
-      <td>bigbrother ch4 the x 37b s big brother reveale...</td>
-      <td># bigbrother # ch4 x-37b big brother reveal : ...</td>
-      <td>UNK UNK the UNK big UNK UNK UNK bags UNK UNK t...</td>
-      <td>UNK UNK the UNK UNK s big UNK UNK UNK bags 6 U...</td>
-      <td># UNK # UNK UNK big UNK UNK : UNK bag $ UNK m ...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>525</td>
-      <td>759</td>
-      <td>avalanche</td>
-      <td>UK</td>
-      <td>Musician Kalle Mattson Recreates 34 Classic Al...</td>
-      <td>0</td>
-      <td>musician kalle mattson recreates 34 classic al...</td>
-      <td>musician kalle mattson recreate 34 classic alb...</td>
-      <td>Musician Kalle Mattson Recreates 34 Classic Al...</td>
-      <td>musician kalle mattson recreates 34 classic al...</td>
-      <td>musician kalle mattson recreate 34 classic alb...</td>
-      <td>UNK UNK UNK UNK UNK UNK album UNK in UNK music...</td>
-      <td>UNK UNK UNK UNK UNK UNK album UNK in UNK music...</td>
-      <td>UNK UNK UNK UNK UNK UNK album cover UNK music ...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>5015</td>
-      <td>7154</td>
-      <td>mudslide</td>
-      <td>Wales</td>
-      <td>Hope Dorett's 'mudslide' cake wins?? #GBBO</td>
-      <td>0</td>
-      <td>hope dorett s mudslide cake wins gbbo</td>
-      <td>hope dorett ' mudslide ' cake win ? ? # gbbo</td>
-      <td>Hope Dorett's 'mudslide' cake wins?? #GBBO</td>
-      <td>hope dorett s mudslide cake wins gbbo</td>
-      <td>hope dorett ' mudslide ' cake win ?_? # gbbo</td>
-      <td>hope UNK UNK cake UNK UNK</td>
-      <td>hope UNK s mudslide cake UNK UNK</td>
-      <td>hope UNK ' mudslide ' cake win ?_? # UNK</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>3639</td>
-      <td>5188</td>
-      <td>fatalities</td>
-      <td>NaN</td>
-      <td>Mortal Kombat X: All Fatalities On Meat Predat...</td>
-      <td>0</td>
-      <td>mortal kombat x all fatalities on meat predator</td>
-      <td>mortal kombat x : fatality meat predator . \n ...</td>
-      <td>Mortal Kombat X: All Fatalities On Meat Predat...</td>
-      <td>mortal kombat x all fatalities on meat predator</td>
-      <td>mortal kombat x : fatality meat predator . htt...</td>
-      <td>UNK UNK UNK all fatalities on UNK UNK UNK</td>
-      <td>UNK UNK UNK all fatalities on UNK UNK</td>
-      <td>UNK UNK UNK : fatality UNK UNK . UNK</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>4264</td>
-      <td>6058</td>
-      <td>heat%20wave</td>
-      <td>State College, PA</td>
-      <td>Must Read Forecast! Longest Streak of Triple-D...</td>
-      <td>1</td>
-      <td>must read forecast longest streak of triple di...</td>
-      <td>read forecast ! long streak triple - digit hea...</td>
-      <td>Must Read Forecast! Longest Streak of Triple-D...</td>
-      <td>must read forecast longest streak of triple di...</td>
-      <td>read forecast ! long streak triple - digit hea...</td>
-      <td>must read UNK UNK UNK of UNK heat since 2013 w...</td>
-      <td>must UNK UNK UNK UNK of UNK UNK heat since 201...</td>
-      <td>read UNK ! long UNK UNK - UNK heat 2013 happen...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>3218</td>
-      <td>4617</td>
-      <td>emergency%20services</td>
-      <td>Henderson, Nevada</td>
-      <td>Apply now to work for Dignity Health as #RN #E...</td>
-      <td>0</td>
-      <td>apply now to work for dignity health as rn eme...</td>
-      <td>apply work dignity health # rn # emergency ser...</td>
-      <td>Apply now to work for Dignity Health as #RN #E...</td>
-      <td>apply now to work for dignity health as rn eme...</td>
-      <td>apply work dignity health # rn # emergency ser...</td>
-      <td>UNK now to work for UNK UNK as UNK UNK service...</td>
-      <td>UNK now to work for UNK UNK as UNK emergency s...</td>
-      <td>UNK work UNK health # UNK # emergency service ...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>2227</td>
-      <td>3185</td>
-      <td>deluge</td>
-      <td>NaN</td>
-      <td>The f$&amp;amp;@ing things I do for #GISHWHES Just...</td>
-      <td>0</td>
-      <td>the f amp ing things i do for gishwhes just go...</td>
-      <td>f$&amp;amp;@ing thing # gishwhe get soak deluge go...</td>
-      <td>The f$&amp;amp;@ing things I do for #GISHWHES Just...</td>
-      <td>the f amp ing things i do for gishwhes just go...</td>
-      <td>f$&amp;amp;@ing thing # gishwhe get soak deluge go...</td>
-      <td>the UNK things i do for UNK just got UNK in a ...</td>
-      <td>the UNK amp UNK things i do for UNK just got U...</td>
-      <td>UNK thing # UNK get UNK deluge go UNK UNK . UN...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>1163</td>
-      <td>1675</td>
-      <td>bridge%20collapse</td>
-      <td>NaN</td>
-      <td>Sioux City Fire Officials Believe Bridge Colla...</td>
-      <td>1</td>
-      <td>sioux city fire officials believe bridge colla...</td>
-      <td>sioux city fire official believe bridge collap...</td>
-      <td>Sioux City Fire Officials Believe Bridge Colla...</td>
-      <td>sioux city fire officials believe bridge colla...</td>
-      <td>sioux city fire official believe bridge collap...</td>
-      <td>UNK city fire officials believe bridge collaps...</td>
-      <td>UNK city fire officials believe bridge collaps...</td>
-      <td>UNK city fire official believe bridge collapse...</td>
+      <td>exploration takes seismic shift in gabon to so...</td>
+      <td>exploration take seismic shift gabon somalia -...</td>
+      <td>Exploration takes seismic shift in Gabon to So...</td>
+      <td>exploration takes seismic shift in gabon to so...</td>
+      <td>exploration take seismic shift gabon somalia -...</td>
+      <td>UNK UNK seismic UNK in UNK to UNK - UNK UNK UN...</td>
+      <td>UNK UNK seismic UNK in UNK to UNK UNK UNK</td>
+      <td>UNK take seismic UNK UNK UNK - UNK ( UNK ) UNK...</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -4518,7 +3315,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.6407563025210085, 0.27388535031847133)</pre>
+<pre>(0.6313025210084033, 0.26875)</pre>
 </div>
 
 </div>
@@ -4532,7 +3329,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>64.08%</code> accuracy! That's about the same as the TF-IDF model. The F1 score on the other hand... yikes! <code>0.27</code>. Horrible!</p>
+<p><code>63.13%</code> accuracy! That's about the same as the TF-IDF model. The F1 score on the other hand... yikes! <code>0.27</code>. Horrible!</p>
 <p>Can we improve that with either of the preprocessed tweets?</p>
 
 </div>
@@ -4563,147 +3360,9 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">valid</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'prediction'</span><span class="p">])</span>
-<span class="n">valid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>index</th>
-      <th>id</th>
-      <th>keyword</th>
-      <th>location</th>
-      <th>text</th>
-      <th>target</th>
-      <th>text_simple</th>
-      <th>text_spacy</th>
-      <th>text_trigram</th>
-      <th>text_trigram_simple</th>
-      <th>text_trigram_spacy</th>
-      <th>text_count_5</th>
-      <th>text_simple_5</th>
-      <th>text_spacy_5</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5830</td>
-      <td>8329</td>
-      <td>rubble</td>
-      <td>West Africa</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>1</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>UNK china's stock market crash: are there gems...</td>
-      <td>UNK china s stock market crash are there gems ...</td>
-      <td># UNK : china stock market crash : gem rubble ...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2548</td>
-      <td>3656</td>
-      <td>destroy</td>
-      <td>Honduras</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>0</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>black UNK 3 UNK and destroy UNK UNK UNK UNK UN...</td>
-      <td>black UNK 3 UNK and destroy UNK UNK UNK UNK UNK</td>
-      <td>black UNK 3 UNK destroy UNK ! ( UNK UNK UNK UN...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2644</td>
-      <td>3796</td>
-      <td>destruction</td>
-      <td>NaN</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>1</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>so you have a new weapon that can cause UNK UNK</td>
-      <td>so you have a new weapon that can cause UNK UN...</td>
-      <td>new weapon cause UNK - UNK destruction .</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>6078</td>
-      <td>8684</td>
-      <td>sinkhole</td>
-      <td>Haddonfield, NJ</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>1</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>UNK sinkhole UNK road UNK whole UNK UNK</td>
-      <td>UNK sinkhole UNK road UNK whole UNK</td>
-      <td>UNK sinkhole close road swallow UNK UNK</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>6531</td>
-      <td>9342</td>
-      <td>survived</td>
-      <td>London</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>0</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>survived another UNK strike with the last pers...</td>
-      <td>survived another UNK strike with the last pers...</td>
-      <td>survive UNK strike person UNK UNK home . get w...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -4731,7 +3390,7 @@ We'll start by analyzing the unprocessed tweets.</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">min_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sample</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">min_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sample</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 
 <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">[</span><span class="n">wd</span> <span class="k">for</span> <span class="n">wd</span> <span class="ow">in</span> <span class="n">tweet</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)]</span>
@@ -4785,7 +3444,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Runtime: 18.409112783273063 mins
+<pre>Runtime: 15.660316868623097 mins
 </pre>
 </div>
 </div>
@@ -4820,7 +3479,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.6859243697478992, 0.4503676470588235)</pre>
+<pre>(0.6754201680672269, 0.44821428571428573)</pre>
 </div>
 
 </div>
@@ -4834,7 +3493,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Quite an improvement! Our accuracy and F1 score went up to <code>68.59%</code> and <code>0.45</code>, respectively.</p>
+<p>Quite an improvement! Our accuracy and F1 score went up to <code>67.54%</code> and <code>0.45</code>, respectively.</p>
 <p>Now let's see how the SpaCy tweets perform in our Word2Vec model.</p>
 
 </div>
@@ -4865,147 +3524,9 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">valid</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'prediction'</span><span class="p">])</span>
-<span class="n">valid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>index</th>
-      <th>id</th>
-      <th>keyword</th>
-      <th>location</th>
-      <th>text</th>
-      <th>target</th>
-      <th>text_simple</th>
-      <th>text_spacy</th>
-      <th>text_trigram</th>
-      <th>text_trigram_simple</th>
-      <th>text_trigram_spacy</th>
-      <th>text_count_5</th>
-      <th>text_simple_5</th>
-      <th>text_spacy_5</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5830</td>
-      <td>8329</td>
-      <td>rubble</td>
-      <td>West Africa</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>1</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>#TNN: China's Stock Market Crash: Are There Ge...</td>
-      <td>tnn china s stock market crash are there gems ...</td>
-      <td># tnn : china stock market crash : gem rubble ...</td>
-      <td>UNK china's stock market crash: are there gems...</td>
-      <td>UNK china s stock market crash are there gems ...</td>
-      <td># UNK : china stock market crash : gem rubble ...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2548</td>
-      <td>3656</td>
-      <td>destroy</td>
-      <td>Honduras</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>0</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>Black Ops 3 SEARCH AND DESTROY GAMEPLAY! (Hunt...</td>
-      <td>black ops 3 search and destroy gameplay hunted...</td>
-      <td>black ops 3 search destroy gameplay ! ( hunt s...</td>
-      <td>black UNK 3 UNK and destroy UNK UNK UNK UNK UN...</td>
-      <td>black UNK 3 UNK and destroy UNK UNK UNK UNK UNK</td>
-      <td>black UNK 3 UNK destroy UNK ! ( UNK UNK UNK UN...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2644</td>
-      <td>3796</td>
-      <td>destruction</td>
-      <td>NaN</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>1</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>So you have a new weapon that can cause un-ima...</td>
-      <td>so you have a new weapon that can cause un ima...</td>
-      <td>new weapon cause un - imaginable destruction .</td>
-      <td>so you have a new weapon that can cause UNK UNK</td>
-      <td>so you have a new weapon that can cause UNK UN...</td>
-      <td>new weapon cause UNK - UNK destruction .</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>6078</td>
-      <td>8684</td>
-      <td>sinkhole</td>
-      <td>Haddonfield, NJ</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>1</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>Georgia sinkhole closes road swallows whole po...</td>
-      <td>georgia sinkhole closes road swallows whole pond</td>
-      <td>georgia sinkhole close road swallow pond http:...</td>
-      <td>UNK sinkhole UNK road UNK whole UNK UNK</td>
-      <td>UNK sinkhole UNK road UNK whole UNK</td>
-      <td>UNK sinkhole close road swallow UNK UNK</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>6531</td>
-      <td>9342</td>
-      <td>survived</td>
-      <td>London</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>0</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>Survived another tube strike with the last per...</td>
-      <td>survived another tube strike with the last per...</td>
-      <td>survive tube strike person office reach home ....</td>
-      <td>survived another UNK strike with the last pers...</td>
-      <td>survived another UNK strike with the last pers...</td>
-      <td>survive UNK strike person UNK UNK home . get w...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -5024,7 +3545,7 @@ We'll start by analyzing the unprocessed tweets.</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">min_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sample</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">min_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sample</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 
 <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">[</span><span class="n">wd</span> <span class="k">for</span> <span class="n">wd</span> <span class="ow">in</span> <span class="n">tweet</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)]</span>
@@ -5078,7 +3599,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Runtime: 16.03406145175298 mins
+<pre>Runtime: 14.212949315706888 mins
 </pre>
 </div>
 </div>
@@ -5113,7 +3634,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.6554621848739496, 0.3180873180873181)</pre>
+<pre>(0.648109243697479, 0.33399602385685884)</pre>
 </div>
 
 </div>
@@ -5127,8 +3648,8 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>SpaCy again comes in the middle of our three tests with an accuracy of <code>65.55%</code> and F1 score of <code>0.32</code>.</p>
-<p>Among the three datasets trained with a Word2Vec model, the "simple" tweets seem to have it again with an accuracy of <code>68.59%</code> and an F1 score of <code>0.45</code>.</p>
+<p>SpaCy, this time, comes in the middle of our three tests with an accuracy of <code>64.81%</code> and F1 score of <code>0.33</code>.</p>
+<p>Among the three datasets trained with a Word2Vec model, the "simple" tweets seem to have it again with an accuracy of <code>67.54%</code> and an F1 score of <code>0.45</code>.</p>
 <p>Lastly, let's turn to transfer learning.</p>
 
 </div>
@@ -5260,13 +3781,13 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <th>0</th>
-      <td>xxbos xxmaj investigators shift focus to cause of fatal xxmaj waimate fire http : / / t.co / xxunk xxbos xxunk - old xxmaj baby xxmaj girl was xxmaj rescued by xxmaj xxunk after xxmaj she xxmaj floated xxup half a xxup mile xxmaj out to xxmaj sea ! # socialnews http : / / t.co / xxunk xxbos xxunk xxunk xxunk xxmaj joe ur so xxunk u should run 4 president xxmaj ur perfect ! the xxmaj american people</td>
-      <td>xxmaj investigators shift focus to cause of fatal xxmaj waimate fire http : / / t.co / xxunk xxbos xxunk - old xxmaj baby xxmaj girl was xxmaj rescued by xxmaj xxunk after xxmaj she xxmaj floated xxup half a xxup mile xxmaj out to xxmaj sea ! # socialnews http : / / t.co / xxunk xxbos xxunk xxunk xxunk xxmaj joe ur so xxunk u should run 4 president xxmaj ur perfect ! the xxmaj american people love</td>
+      <td>xxbos xxmaj student electrocuted to death in school campus http : / / t.co / xxunk xxbos xxunk xxunk xxunk xxmaj i 'm aware that not all xxup as are from countries we have bombed but a lot are xxunk conflict xxbos xxmaj i 'm about to be obliterated xxbos xxmaj full xxmaj episode : xxup xxunk 08 / 02 / 15 : xxmaj california xxmaj wild xxmaj fires xxmaj force 12 xxrep 3 0 to xxmaj evacuate # xxmaj</td>
+      <td>xxmaj student electrocuted to death in school campus http : / / t.co / xxunk xxbos xxunk xxunk xxunk xxmaj i 'm aware that not all xxup as are from countries we have bombed but a lot are xxunk conflict xxbos xxmaj i 'm about to be obliterated xxbos xxmaj full xxmaj episode : xxup xxunk 08 / 02 / 15 : xxmaj california xxmaj wild xxmaj fires xxmaj force 12 xxrep 3 0 to xxmaj evacuate # xxmaj worldnews</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>in xxmaj xxunk http : / / t.co / xxunk xxbos xxunk \n xxmaj parents of xxmaj colorado theater shooting victim fear copycat massacre \n\n http : / / t.co / lvlh3w3awo \n  # xxmaj antioch \n\n http : / / t.co / viwxy1xdyk xxbos xxmaj xxunk : xxunk : 10th xxmaj december 2013 xxmaj green xxmaj xxunk in xxmaj xxunk for the xxmaj swiss xxmaj xxunk of xxmaj the xxmaj desolation … http : / / t.co / xxunk</td>
-      <td>xxmaj xxunk http : / / t.co / xxunk xxbos xxunk \n xxmaj parents of xxmaj colorado theater shooting victim fear copycat massacre \n\n http : / / t.co / lvlh3w3awo \n  # xxmaj antioch \n\n http : / / t.co / viwxy1xdyk xxbos xxmaj xxunk : xxunk : 10th xxmaj december 2013 xxmaj green xxmaj xxunk in xxmaj xxunk for the xxmaj swiss xxmaj xxunk of xxmaj the xxmaj desolation … http : / / t.co / xxunk xxbos</td>
+      <td>xxup xxunk : xxunk in yr xxunk election xxunk w / landslide win for xxunk ' http : / / t.co / xxunk xxbos xxup put xxup sandstorm xxup down xxrep 4 ! https : / / t.co / xxunk xxbos xxunk xxmaj enjoy the xxunk landslide xxmaj todd . xxmaj xxunk . xxbos … / / .. / / whao .. 12 xxrep 3 0 xxmaj nigerian refugees repatriated from xxmaj cameroon http : / / t.co / xxunk</td>
+      <td>xxunk : xxunk in yr xxunk election xxunk w / landslide win for xxunk ' http : / / t.co / xxunk xxbos xxup put xxup sandstorm xxup down xxrep 4 ! https : / / t.co / xxunk xxbos xxunk xxmaj enjoy the xxunk landslide xxmaj todd . xxmaj xxunk . xxbos … / / .. / / whao .. 12 xxrep 3 0 xxmaj nigerian refugees repatriated from xxmaj cameroon http : / / t.co / xxunk xxbos</td>
     </tr>
   </tbody>
 </table>
@@ -5351,11 +3872,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>4.491828</td>
-      <td>3.658581</td>
-      <td>0.387017</td>
-      <td>38.806240</td>
-      <td>01:48</td>
+      <td>4.493520</td>
+      <td>3.626821</td>
+      <td>0.393020</td>
+      <td>37.593121</td>
+      <td>01:38</td>
     </tr>
   </tbody>
 </table>
@@ -5404,83 +3925,83 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>3.770010</td>
-      <td>3.639670</td>
-      <td>0.388401</td>
-      <td>38.079266</td>
-      <td>01:46</td>
+      <td>3.756268</td>
+      <td>3.606677</td>
+      <td>0.395410</td>
+      <td>36.843430</td>
+      <td>01:37</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>3.734939</td>
-      <td>3.569396</td>
-      <td>0.392728</td>
-      <td>35.495167</td>
-      <td>01:50</td>
+      <td>3.722715</td>
+      <td>3.534695</td>
+      <td>0.399615</td>
+      <td>34.284554</td>
+      <td>01:38</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>3.692173</td>
-      <td>3.482843</td>
-      <td>0.399855</td>
-      <td>32.552151</td>
-      <td>01:44</td>
+      <td>3.670052</td>
+      <td>3.445324</td>
+      <td>0.408519</td>
+      <td>31.353439</td>
+      <td>01:36</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>3.618958</td>
-      <td>3.413075</td>
-      <td>0.409730</td>
-      <td>30.358452</td>
-      <td>01:44</td>
+      <td>3.608591</td>
+      <td>3.377170</td>
+      <td>0.415497</td>
+      <td>29.287779</td>
+      <td>01:36</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>3.560955</td>
-      <td>3.363452</td>
-      <td>0.415191</td>
-      <td>28.888756</td>
-      <td>01:46</td>
+      <td>3.545309</td>
+      <td>3.328276</td>
+      <td>0.421299</td>
+      <td>27.890228</td>
+      <td>01:37</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>3.494952</td>
-      <td>3.328071</td>
-      <td>0.418787</td>
-      <td>27.884504</td>
-      <td>01:46</td>
+      <td>3.483710</td>
+      <td>3.294219</td>
+      <td>0.425069</td>
+      <td>26.956341</td>
+      <td>01:37</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>3.442179</td>
-      <td>3.305729</td>
-      <td>0.423154</td>
-      <td>27.268423</td>
-      <td>01:45</td>
+      <td>3.428636</td>
+      <td>3.272936</td>
+      <td>0.427655</td>
+      <td>26.388706</td>
+      <td>01:37</td>
     </tr>
     <tr>
       <td>7</td>
-      <td>3.399147</td>
-      <td>3.295249</td>
-      <td>0.424829</td>
-      <td>26.984131</td>
-      <td>01:46</td>
+      <td>3.388489</td>
+      <td>3.262204</td>
+      <td>0.429664</td>
+      <td>26.107006</td>
+      <td>01:37</td>
     </tr>
     <tr>
       <td>8</td>
-      <td>3.362297</td>
-      <td>3.289747</td>
-      <td>0.425076</td>
-      <td>26.836067</td>
-      <td>01:44</td>
+      <td>3.352031</td>
+      <td>3.257177</td>
+      <td>0.430366</td>
+      <td>25.976101</td>
+      <td>01:37</td>
     </tr>
     <tr>
       <td>9</td>
-      <td>3.334519</td>
-      <td>3.288971</td>
-      <td>0.425076</td>
-      <td>26.815262</td>
-      <td>01:44</td>
+      <td>3.335237</td>
+      <td>3.256474</td>
+      <td>0.430461</td>
+      <td>25.957844</td>
+      <td>01:37</td>
     </tr>
   </tbody>
 </table>
@@ -5590,17 +4111,17 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <th>0</th>
-      <td>xxbos . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : xxup rt xxunk : # xxunk \n\n xxmaj indian xxmaj army xxunk _ http : / / t.co / xxunk g</td>
+      <td>xxbos _ xxunk xxrep 5 ? xxup xxunk xxunk xxrep 7 ? xxunk xxrep 5 ? xxup follow xxup all xxup who xxup rt xxunk xxrep 7 ? xxunk xxrep 5 ? xxup xxunk xxunk xxrep 7 ? xxunk xxrep 5 ? xxup xxunk xxup with xxunk xxrep 7 ? xxunk xxrep 5 ? xxup follow ? xxunk # xxup xxunk xxunk # xxup ty</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>xxbos xxup info xxup s. xxup xxunk : xxunk / 6 . xxup xxunk : xxup xxunk xxup xxunk . xxup exp xxup xxunk xxup xxunk . xxup xxunk 05 . xxup curfew xxup in xxup xxunk xxup until xxunk xxup xxunk xxup xxunk xxup foxtrot 5 &amp; &amp; xxup foxtrot 6 xxup xxunk . xxup xxunk : 10 . xxpad xxpad xxpad xxpad</td>
+      <td>xxbos xxup info xxup u. xxup xxunk : xxup xxunk xxup xxunk . xxup exp xxup inst xxup apch . xxup rwy 05 . xxup curfew xxup in xxup oper xxup until 2030 xxup z. xxup taxiways xxup foxtrot 5 &amp; &amp; xxup foxtrot 6 xxup navbl . xxup tmp : 10 . xxup wnd : xxunk / 6 . xxpad xxpad xxpad xxpad xxpad</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>xxbos xxup info xxup r. xxup curfew xxup in xxup xxunk xxup until xxunk xxup xxunk xxup xxunk xxup foxtrot 5 &amp; &amp; xxup foxtrot 6 xxup xxunk . xxup xxunk : xxunk / 5 . xxup exp xxup xxunk xxup xxunk . xxup xxunk 05 . xxup xxunk . xxup xxunk : 10 . xxup xxunk : xxunk . xxpad xxpad xxpad xxpad</td>
+      <td>xxbos xxup info xxup r. xxup curfew xxup in xxup oper xxup until 2030 xxup z. xxup taxiways xxup foxtrot 5 &amp; &amp; xxup foxtrot 6 xxup navbl . xxup wnd : xxunk / 5 . xxup exp xxup inst xxup apch . xxup rwy 05 . xxup xxunk . xxup tmp : 10 . xxup xxunk : xxunk . xxpad xxpad xxpad xxpad xxpad</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -5630,7 +4151,9 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span> <span class="o">=</span> <span class="n">text_classifier_learner</span><span class="p">(</span><span class="n">dls_clas</span><span class="p">,</span> <span class="n">AWD_LSTM</span><span class="p">,</span> <span class="n">drop_mult</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">F1Score</span><span class="p">()])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span> <span class="o">=</span> <span class="n">text_classifier_learner</span><span class="p">(</span>
+    <span class="n">dls_clas</span><span class="p">,</span> <span class="n">AWD_LSTM</span><span class="p">,</span> <span class="n">drop_mult</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">F1Score</span><span class="p">()])</span>
 </pre></div>
 
     </div>
@@ -5683,11 +4206,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.749260</td>
-      <td>0.501972</td>
-      <td>0.770039</td>
-      <td>0.688612</td>
-      <td>00:45</td>
+      <td>0.758835</td>
+      <td>0.490689</td>
+      <td>0.770696</td>
+      <td>0.712284</td>
+      <td>00:44</td>
     </tr>
   </tbody>
 </table>
@@ -5746,11 +4269,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.651064</td>
-      <td>0.493843</td>
-      <td>0.783837</td>
-      <td>0.728772</td>
-      <td>00:56</td>
+      <td>0.650367</td>
+      <td>0.483046</td>
+      <td>0.781209</td>
+      <td>0.740047</td>
+      <td>00:53</td>
     </tr>
   </tbody>
 </table>
@@ -5800,11 +4323,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.547001</td>
-      <td>0.461932</td>
-      <td>0.795007</td>
-      <td>0.724868</td>
-      <td>01:35</td>
+      <td>0.559126</td>
+      <td>0.457762</td>
+      <td>0.800263</td>
+      <td>0.743243</td>
+      <td>01:29</td>
     </tr>
   </tbody>
 </table>
@@ -5854,19 +4377,19 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.495468</td>
-      <td>0.445766</td>
-      <td>0.800263</td>
-      <td>0.731922</td>
-      <td>02:13</td>
+      <td>0.504711</td>
+      <td>0.439913</td>
+      <td>0.803548</td>
+      <td>0.766224</td>
+      <td>02:07</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>0.473490</td>
-      <td>0.442739</td>
+      <td>0.486418</td>
+      <td>0.433688</td>
       <td>0.808147</td>
-      <td>0.749141</td>
-      <td>02:15</td>
+      <td>0.769716</td>
+      <td>02:06</td>
     </tr>
   </tbody>
 </table>
@@ -5883,7 +4406,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After fully unfreezing and fitting our model, our accuracy is... <code>80.81%</code>! Over 11% better than our best Word2Vec! Impressive. Our F1 score of <code>0.749</code> also blows away our best Word2Vec F1 score of <code>0.450</code>. Impressive, indeed.</p>
+<p>After fully unfreezing and fitting our model, our accuracy is... <code>80.81%</code>! Over 11% better than our best Word2Vec! Impressive. Our F1 score of <code>0.770</code> also blows away our best Word2Vec F1 score of <code>0.450</code>. Impressive, indeed.</p>
 <p>But how will transfer learning perform will the preprocessed tweets? Let's find out!</p>
 
 </div>
@@ -5907,7 +4430,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <li>The <code>get_x</code> parameter when creating the <code>DataBlock</code> for the <code>text_classifier_learner</code>, <code>dls_clas</code>, must <em>remain</em> <code>text</code>, no matter the name of the column in the DataFrame that you are using as the independent variable. <a href="https://forums.fast.ai/t/issue-with-textblock-from-df-dataloaders-only-accepting-one-column-name/77467">[1]</a>
 </li>
 </ol>
-<p>Knowing this, let's skip to the fitting and metrics!</p>
+<p>Knowing this, let's fit our language model!</p>
 
 </div>
 </div>
@@ -5938,8 +4461,6 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
     <span class="n">get_y</span><span class="o">=</span><span class="n">ColReader</span><span class="p">(</span><span class="s1">'target'</span><span class="p">),</span>
     <span class="n">splitter</span><span class="o">=</span><span class="n">RandomSplitter</span><span class="p">()</span>
 <span class="p">)</span><span class="o">.</span><span class="n">dataloaders</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">seq_len</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
-
-<span class="n">learn</span> <span class="o">=</span> <span class="n">text_classifier_learner</span><span class="p">(</span><span class="n">dls_clas</span><span class="p">,</span> <span class="n">AWD_LSTM</span><span class="p">,</span> <span class="n">drop_mult</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">F1Score</span><span class="p">()])</span>
 </pre></div>
 
     </div>
@@ -5968,11 +4489,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>6.004099</td>
-      <td>5.214499</td>
-      <td>0.192453</td>
-      <td>183.919571</td>
-      <td>01:07</td>
+      <td>6.019077</td>
+      <td>5.163853</td>
+      <td>0.198145</td>
+      <td>174.836746</td>
+      <td>00:56</td>
     </tr>
   </tbody>
 </table>
@@ -5998,83 +4519,83 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>5.320492</td>
-      <td>5.192002</td>
-      <td>0.193625</td>
-      <td>179.828171</td>
-      <td>01:04</td>
+      <td>5.322052</td>
+      <td>5.142820</td>
+      <td>0.199809</td>
+      <td>171.197922</td>
+      <td>00:56</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>5.292618</td>
-      <td>5.105195</td>
-      <td>0.207221</td>
-      <td>164.876144</td>
-      <td>01:02</td>
+      <td>5.295057</td>
+      <td>5.063235</td>
+      <td>0.211279</td>
+      <td>158.101196</td>
+      <td>00:56</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>5.235547</td>
-      <td>4.998462</td>
-      <td>0.215516</td>
-      <td>148.185104</td>
-      <td>01:03</td>
+      <td>5.253794</td>
+      <td>4.969788</td>
+      <td>0.215545</td>
+      <td>143.996292</td>
+      <td>00:56</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>5.170645</td>
-      <td>4.908301</td>
-      <td>0.223763</td>
-      <td>135.409149</td>
-      <td>01:04</td>
+      <td>5.187418</td>
+      <td>4.889296</td>
+      <td>0.228875</td>
+      <td>132.859955</td>
+      <td>00:56</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>5.104895</td>
-      <td>4.837043</td>
-      <td>0.233116</td>
-      <td>126.095909</td>
-      <td>01:03</td>
+      <td>5.118052</td>
+      <td>4.829380</td>
+      <td>0.229359</td>
+      <td>125.133362</td>
+      <td>00:56</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>5.043310</td>
-      <td>4.787548</td>
-      <td>0.240815</td>
-      <td>120.006699</td>
-      <td>01:05</td>
+      <td>5.050055</td>
+      <td>4.783056</td>
+      <td>0.237052</td>
+      <td>119.468918</td>
+      <td>00:56</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>4.986475</td>
-      <td>4.756124</td>
-      <td>0.245714</td>
-      <td>116.294296</td>
-      <td>01:03</td>
+      <td>4.993558</td>
+      <td>4.753863</td>
+      <td>0.240452</td>
+      <td>116.031631</td>
+      <td>00:56</td>
     </tr>
     <tr>
       <td>7</td>
-      <td>4.937574</td>
-      <td>4.738180</td>
-      <td>0.249441</td>
-      <td>114.226082</td>
-      <td>01:02</td>
+      <td>4.942537</td>
+      <td>4.738311</td>
+      <td>0.240891</td>
+      <td>114.241066</td>
+      <td>00:56</td>
     </tr>
     <tr>
       <td>8</td>
-      <td>4.897347</td>
-      <td>4.731004</td>
-      <td>0.250125</td>
-      <td>113.409393</td>
-      <td>01:03</td>
+      <td>4.901583</td>
+      <td>4.732070</td>
+      <td>0.242556</td>
+      <td>113.530380</td>
+      <td>00:56</td>
     </tr>
     <tr>
       <td>9</td>
-      <td>4.865251</td>
-      <td>4.729824</td>
-      <td>0.250174</td>
-      <td>113.275574</td>
-      <td>01:04</td>
+      <td>4.869204</td>
+      <td>4.731000</td>
+      <td>0.242702</td>
+      <td>113.408905</td>
+      <td>00:56</td>
     </tr>
   </tbody>
 </table>
@@ -6106,6 +4627,14 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Fit our text classifier:</p>
+
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -6113,7 +4642,8 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span><span class="o">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2e-2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span> <span class="o">=</span> <span class="n">text_classifier_learner</span><span class="p">(</span><span class="n">dls_clas</span><span class="p">,</span> <span class="n">AWD_LSTM</span><span class="p">,</span> <span class="n">drop_mult</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">F1Score</span><span class="p">()])</span>
+<span class="n">learn</span><span class="o">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2e-2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -6141,11 +4671,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.727587</td>
-      <td>0.518452</td>
-      <td>0.754928</td>
-      <td>0.699436</td>
-      <td>00:31</td>
+      <td>0.737682</td>
+      <td>0.509384</td>
+      <td>0.750986</td>
+      <td>0.726354</td>
+      <td>00:27</td>
     </tr>
   </tbody>
 </table>
@@ -6203,11 +4733,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.614805</td>
-      <td>0.490569</td>
-      <td>0.770039</td>
-      <td>0.709302</td>
-      <td>00:38</td>
+      <td>0.617487</td>
+      <td>0.482516</td>
+      <td>0.769382</td>
+      <td>0.729375</td>
+      <td>00:32</td>
     </tr>
   </tbody>
 </table>
@@ -6257,11 +4787,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.532009</td>
-      <td>0.480033</td>
-      <td>0.770696</td>
-      <td>0.727557</td>
-      <td>01:02</td>
+      <td>0.534399</td>
+      <td>0.475102</td>
+      <td>0.775296</td>
+      <td>0.717355</td>
+      <td>00:55</td>
     </tr>
   </tbody>
 </table>
@@ -6311,19 +4841,19 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.481711</td>
-      <td>0.469448</td>
-      <td>0.778581</td>
-      <td>0.730184</td>
-      <td>01:26</td>
+      <td>0.489055</td>
+      <td>0.448742</td>
+      <td>0.799606</td>
+      <td>0.764842</td>
+      <td>01:19</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>0.458739</td>
-      <td>0.468709</td>
-      <td>0.785808</td>
-      <td>0.733224</td>
-      <td>01:25</td>
+      <td>0.463102</td>
+      <td>0.445263</td>
+      <td>0.802234</td>
+      <td>0.766847</td>
+      <td>01:18</td>
     </tr>
   </tbody>
 </table>
@@ -6340,8 +4870,8 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Accuracy: <code>78.58%</code>. F1 score: <code>0.733</code>.</p>
-<p>Still great results, but not better than the unprocessed tweets. This is the opposite of what happened with TF-IDF and Word2Vec.</p>
+<p>Accuracy: <code>80.22%</code>. F1 score: <code>0.767</code>.</p>
+<p>Nearly the same as, but not quite better than the unprocessed tweets. This is the opposite of what happened with TF-IDF and Word2Vec.</p>
 <p>Let's see how the SpaCy tweets perform:</p>
 
 </div>
@@ -6359,7 +4889,8 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's do the same thing with our tweets preprocessed with SpaCy:</p>
+<p>Let's do the same thing with our tweets preprocessed with SpaCy.</p>
+<p>First, the language model:</p>
 
 </div>
 </div>
@@ -6390,8 +4921,6 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
     <span class="n">get_y</span><span class="o">=</span><span class="n">ColReader</span><span class="p">(</span><span class="s1">'target'</span><span class="p">),</span>
     <span class="n">splitter</span><span class="o">=</span><span class="n">RandomSplitter</span><span class="p">()</span>
 <span class="p">)</span><span class="o">.</span><span class="n">dataloaders</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">seq_len</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
-
-<span class="n">learn</span> <span class="o">=</span> <span class="n">text_classifier_learner</span><span class="p">(</span><span class="n">dls_clas</span><span class="p">,</span> <span class="n">AWD_LSTM</span><span class="p">,</span> <span class="n">drop_mult</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">F1Score</span><span class="p">()])</span>
 </pre></div>
 
     </div>
@@ -6420,11 +4949,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>5.706690</td>
-      <td>4.312386</td>
-      <td>0.360170</td>
-      <td>74.618286</td>
-      <td>01:07</td>
+      <td>5.713386</td>
+      <td>4.250023</td>
+      <td>0.369869</td>
+      <td>70.107018</td>
+      <td>01:03</td>
     </tr>
   </tbody>
 </table>
@@ -6450,83 +4979,83 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>4.617074</td>
-      <td>4.272776</td>
-      <td>0.362547</td>
-      <td>71.720467</td>
-      <td>01:07</td>
+      <td>4.653237</td>
+      <td>4.210376</td>
+      <td>0.370858</td>
+      <td>67.381859</td>
+      <td>01:02</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>4.551154</td>
-      <td>4.126544</td>
-      <td>0.394834</td>
-      <td>61.963436</td>
-      <td>01:06</td>
+      <td>4.582531</td>
+      <td>4.049045</td>
+      <td>0.403041</td>
+      <td>57.342648</td>
+      <td>01:02</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>4.463481</td>
-      <td>3.999427</td>
-      <td>0.411593</td>
-      <td>54.566891</td>
-      <td>01:06</td>
+      <td>4.480067</td>
+      <td>3.906515</td>
+      <td>0.421333</td>
+      <td>49.725338</td>
+      <td>01:01</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>4.374925</td>
-      <td>3.913188</td>
-      <td>0.417397</td>
-      <td>50.058308</td>
-      <td>01:06</td>
+      <td>4.384799</td>
+      <td>3.809164</td>
+      <td>0.434499</td>
+      <td>45.112709</td>
+      <td>01:01</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>4.295952</td>
-      <td>3.850333</td>
-      <td>0.422705</td>
-      <td>47.008724</td>
-      <td>01:08</td>
+      <td>4.299644</td>
+      <td>3.742372</td>
+      <td>0.440083</td>
+      <td>42.197945</td>
+      <td>01:02</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>4.222636</td>
-      <td>3.804458</td>
-      <td>0.428141</td>
-      <td>44.900890</td>
-      <td>01:07</td>
+      <td>4.220522</td>
+      <td>3.691609</td>
+      <td>0.444460</td>
+      <td>40.109318</td>
+      <td>01:03</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>4.170039</td>
-      <td>3.776617</td>
-      <td>0.429490</td>
-      <td>43.668045</td>
-      <td>01:10</td>
+      <td>4.166790</td>
+      <td>3.660479</td>
+      <td>0.448433</td>
+      <td>38.879967</td>
+      <td>01:04</td>
     </tr>
     <tr>
       <td>7</td>
-      <td>4.108244</td>
-      <td>3.760522</td>
-      <td>0.431906</td>
-      <td>42.970837</td>
-      <td>01:08</td>
+      <td>4.110455</td>
+      <td>3.642861</td>
+      <td>0.450266</td>
+      <td>38.200970</td>
+      <td>01:02</td>
     </tr>
     <tr>
       <td>8</td>
-      <td>4.065337</td>
-      <td>3.753966</td>
-      <td>0.433294</td>
-      <td>42.690048</td>
-      <td>01:09</td>
+      <td>4.065619</td>
+      <td>3.636134</td>
+      <td>0.450706</td>
+      <td>37.944855</td>
+      <td>01:01</td>
     </tr>
     <tr>
       <td>9</td>
-      <td>4.032233</td>
-      <td>3.752884</td>
-      <td>0.433529</td>
-      <td>42.643887</td>
-      <td>01:05</td>
+      <td>4.030597</td>
+      <td>3.635027</td>
+      <td>0.450852</td>
+      <td>37.902893</td>
+      <td>01:01</td>
     </tr>
   </tbody>
 </table>
@@ -6561,7 +5090,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Fit the text classifier:</p>
+<p>Then, fit the text classifier:</p>
 
 </div>
 </div>
@@ -6573,7 +5102,8 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span><span class="o">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2e-2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span> <span class="o">=</span> <span class="n">text_classifier_learner</span><span class="p">(</span><span class="n">dls_clas</span><span class="p">,</span> <span class="n">AWD_LSTM</span><span class="p">,</span> <span class="n">drop_mult</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">F1Score</span><span class="p">()])</span>
+<span class="n">learn</span><span class="o">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2e-2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -6601,11 +5131,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.806559</td>
-      <td>0.531039</td>
-      <td>0.754928</td>
-      <td>0.687343</td>
-      <td>00:34</td>
+      <td>0.792957</td>
+      <td>0.534716</td>
+      <td>0.754271</td>
+      <td>0.710078</td>
+      <td>00:30</td>
     </tr>
   </tbody>
 </table>
@@ -6663,11 +5193,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.673772</td>
-      <td>0.504315</td>
-      <td>0.764126</td>
-      <td>0.670944</td>
-      <td>00:40</td>
+      <td>0.677191</td>
+      <td>0.511442</td>
+      <td>0.761498</td>
+      <td>0.712133</td>
+      <td>00:36</td>
     </tr>
   </tbody>
 </table>
@@ -6717,11 +5247,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.589388</td>
-      <td>0.492628</td>
-      <td>0.770039</td>
-      <td>0.694056</td>
-      <td>01:05</td>
+      <td>0.589788</td>
+      <td>0.478241</td>
+      <td>0.780552</td>
+      <td>0.710069</td>
+      <td>01:02</td>
     </tr>
   </tbody>
 </table>
@@ -6771,19 +5301,19 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.551138</td>
-      <td>0.473456</td>
-      <td>0.773982</td>
-      <td>0.707980</td>
-      <td>01:32</td>
+      <td>0.545371</td>
+      <td>0.475847</td>
+      <td>0.784494</td>
+      <td>0.697417</td>
+      <td>01:27</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>0.532972</td>
-      <td>0.469976</td>
-      <td>0.781866</td>
-      <td>0.713299</td>
-      <td>01:32</td>
+      <td>0.531533</td>
+      <td>0.459217</td>
+      <td>0.787122</td>
+      <td>0.710714</td>
+      <td>01:28</td>
     </tr>
   </tbody>
 </table>
@@ -6800,7 +5330,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Accuracy: <code>78.19%</code>. F1 score: <code>0.713</code>.</p>
+<p>Et voilà! Accuracy: <code>78.71%</code>. F1 score: <code>0.711</code>.</p>
 <p>Whoa! These are the lowest of the three of our transfer learning models. How unexpected.</p>
 <p>So between the three datasets used in transfer learning, the unprocessed dataset seemed to perform the best! Unexpected, indeed.</p>
 
@@ -6833,56 +5363,56 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <tr>
 <td><strong>TF-IDF</strong></td>
 <td>Unprocessed</td>
-<td>62.08%</td>
-<td>0.484</td>
+<td>64.08%</td>
+<td>0.530</td>
 </tr>
 <tr>
 <td>''</td>
 <td>"Simple"</td>
-<td>67.44%</td>
-<td>0.556</td>
+<td>66.60%</td>
+<td>0.570</td>
 </tr>
 <tr>
 <td>''</td>
 <td>SpaCy</td>
-<td>65.60%</td>
-<td>0.499</td>
+<td>64.02%</td>
+<td>0.489</td>
 </tr>
 <tr>
 <td><strong>Word2Vec</strong></td>
 <td>Unprocessed</td>
-<td>64.08%</td>
-<td>0.274</td>
+<td>63.13%</td>
+<td>0.269</td>
 </tr>
 <tr>
 <td>''</td>
 <td>"Simple"</td>
-<td>68.59%</td>
-<td>0.450</td>
+<td>67.54%</td>
+<td>0.448</td>
 </tr>
 <tr>
 <td>''</td>
 <td>SpaCy</td>
-<td>65.55%</td>
-<td>0.318</td>
+<td>64.81%</td>
+<td>0.334</td>
 </tr>
 <tr>
 <td><strong>Transfer Learning</strong></td>
 <td><strong>Unprocessed</strong></td>
 <td><strong>80.81%</strong></td>
-<td><strong>0.749</strong></td>
+<td><strong>0.770</strong></td>
 </tr>
 <tr>
 <td>''</td>
 <td>"Simple"</td>
-<td>78.58%</td>
-<td>0.733</td>
+<td>80.22%</td>
+<td>0.767</td>
 </tr>
 <tr>
 <td>''</td>
 <td>SpaCy</td>
-<td>78.19%</td>
-<td>0.713</td>
+<td>78.71%</td>
+<td>0.711</td>
 </tr>
 </tbody>
 </table>
