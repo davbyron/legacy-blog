@@ -2639,7 +2639,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 </p>
 <div class="flash flash-warn">
     <svg class="octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg>
-    <strong>Important: </strong>We’re using the tweets with trigrams that we built in the Data Augmentation section for our Word2Vec model. If you skipped it, go back now!
+    <strong>Important: </strong>We’re using the tweets with the n-grams that we built in the Data Augmentation section for our Word2Vec model. If you skipped it, go back now!
 </div>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
@@ -2968,7 +2968,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(2006344, 3383040)</pre>
+<pre>(2006054, 3383040)</pre>
 </div>
 
 </div>
@@ -3103,7 +3103,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Runtime: 17.70957545042038 mins
+<pre>Runtime: 15.00377383629481 mins
 </pre>
 </div>
 </div>
@@ -3315,7 +3315,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.6313025210084033, 0.26875)</pre>
+<pre>(0.6339285714285714, 0.277720207253886)</pre>
 </div>
 
 </div>
@@ -3329,8 +3329,13 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>63.13%</code> accuracy! That's about the same as the TF-IDF model. The F1 score on the other hand... yikes! <code>0.27</code>. Horrible!</p>
-<p>Can we improve that with either of the preprocessed tweets?</p>
+<p><code>63.39%</code> accuracy! That's about the same as the TF-IDF model. The F1 score on the other hand... yikes! <code>0.28</code>. Horrible!
+</p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <strong>Note: </strong>There’s a bit of randomness involved when making predictions with Word2Vec and transfer learning (coming up). For this reason, if you run this notebook, your metrics may be a little different than what is shown here.
+</div>
+Can we improve that with either of the preprocessed tweets?
 
 </div>
 </div>
@@ -3444,7 +3449,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Runtime: 15.660316868623097 mins
+<pre>Runtime: 15.7726225177447 mins
 </pre>
 </div>
 </div>
@@ -3479,7 +3484,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.6754201680672269, 0.44821428571428573)</pre>
+<pre>(0.6727941176470589, 0.4331210191082802)</pre>
 </div>
 
 </div>
@@ -3493,7 +3498,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Quite an improvement! Our accuracy and F1 score went up to <code>67.54%</code> and <code>0.45</code>, respectively.</p>
+<p>Quite an improvement! Our accuracy and F1 score went up to <code>67.28%</code> and <code>0.43</code>, respectively.</p>
 <p>Now let's see how the SpaCy tweets perform in our Word2Vec model.</p>
 
 </div>
@@ -3599,7 +3604,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Runtime: 14.212949315706888 mins
+<pre>Runtime: 13.444611112276712 mins
 </pre>
 </div>
 </div>
@@ -3634,7 +3639,7 @@ We'll start by analyzing the unprocessed tweets.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.648109243697479, 0.33399602385685884)</pre>
+<pre>(0.6444327731092437, 0.3236763236763237)</pre>
 </div>
 
 </div>
@@ -3648,8 +3653,8 @@ We'll start by analyzing the unprocessed tweets.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>SpaCy, this time, comes in the middle of our three tests with an accuracy of <code>64.81%</code> and F1 score of <code>0.33</code>.</p>
-<p>Among the three datasets trained with a Word2Vec model, the "simple" tweets seem to have it again with an accuracy of <code>67.54%</code> and an F1 score of <code>0.45</code>.</p>
+<p>SpaCy, this time, comes in the middle of our three tests with an accuracy of <code>64.44%</code> and F1 score of <code>0.32</code>.</p>
+<p>Among the three datasets trained with a Word2Vec model, the "simple" tweets seem to have it again with an accuracy of <code>67.28%</code> and an F1 score of <code>0.43</code>.</p>
 <p>Lastly, let's turn to transfer learning.</p>
 
 </div>
@@ -3781,13 +3786,13 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <th>0</th>
-      <td>xxbos xxmaj student electrocuted to death in school campus http : / / t.co / xxunk xxbos xxunk xxunk xxunk xxmaj i 'm aware that not all xxup as are from countries we have bombed but a lot are xxunk conflict xxbos xxmaj i 'm about to be obliterated xxbos xxmaj full xxmaj episode : xxup xxunk 08 / 02 / 15 : xxmaj california xxmaj wild xxmaj fires xxmaj force 12 xxrep 3 0 to xxmaj evacuate # xxmaj</td>
-      <td>xxmaj student electrocuted to death in school campus http : / / t.co / xxunk xxbos xxunk xxunk xxunk xxmaj i 'm aware that not all xxup as are from countries we have bombed but a lot are xxunk conflict xxbos xxmaj i 'm about to be obliterated xxbos xxmaj full xxmaj episode : xxup xxunk 08 / 02 / 15 : xxmaj california xxmaj wild xxmaj fires xxmaj force 12 xxrep 3 0 to xxmaj evacuate # xxmaj worldnews</td>
+      <td>xxbos xxmaj debris found on xxmaj reunion xxmaj island comes from xxup mh370 : xxmaj malaysian xxup pm http : / / t.co / xxunk xxbos xxunk xxmaj what a fucking idiot . xxmaj he had a gun &amp; &amp; a hatchet yet there were still no serious injuries . xxmaj glad police xxunk him . xxbos xxmaj xxunk just died a thousand deaths ! xxrep 4 ? http : / / t.co / xxunk xxbos ' your body will</td>
+      <td>xxmaj debris found on xxmaj reunion xxmaj island comes from xxup mh370 : xxmaj malaysian xxup pm http : / / t.co / xxunk xxbos xxunk xxmaj what a fucking idiot . xxmaj he had a gun &amp; &amp; a hatchet yet there were still no serious injuries . xxmaj glad police xxunk him . xxbos xxmaj xxunk just died a thousand deaths ! xxrep 4 ? http : / / t.co / xxunk xxbos ' your body will heal</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>xxup xxunk : xxunk in yr xxunk election xxunk w / landslide win for xxunk ' http : / / t.co / xxunk xxbos xxup put xxup sandstorm xxup down xxrep 4 ! https : / / t.co / xxunk xxbos xxunk xxmaj enjoy the xxunk landslide xxmaj todd . xxmaj xxunk . xxbos … / / .. / / whao .. 12 xxrep 3 0 xxmaj nigerian refugees repatriated from xxmaj cameroon http : / / t.co / xxunk</td>
-      <td>xxunk : xxunk in yr xxunk election xxunk w / landslide win for xxunk ' http : / / t.co / xxunk xxbos xxup put xxup sandstorm xxup down xxrep 4 ! https : / / t.co / xxunk xxbos xxunk xxmaj enjoy the xxunk landslide xxmaj todd . xxmaj xxunk . xxbos … / / .. / / whao .. 12 xxrep 3 0 xxmaj nigerian refugees repatriated from xxmaj cameroon http : / / t.co / xxunk xxbos</td>
+      <td>indian xxunk xxunk _ http : / / t.co / xxunk xxbos xxmaj the xxunk xxunk and xxunk has sunk ever lower and xxmaj xxunk who has served on the court since 1998 has … http : / / t.co / xxunk xxbos xxunk _ did n't look like a murder scene just 1 cops a fire truck and 2 fire assistance cars along with a helicopter xxbos xxunk xxmaj there are xxmaj christian terrorists to be sure but i</td>
+      <td>xxunk xxunk _ http : / / t.co / xxunk xxbos xxmaj the xxunk xxunk and xxunk has sunk ever lower and xxmaj xxunk who has served on the court since 1998 has … http : / / t.co / xxunk xxbos xxunk _ did n't look like a murder scene just 1 cops a fire truck and 2 fire assistance cars along with a helicopter xxbos xxunk xxmaj there are xxmaj christian terrorists to be sure but i do</td>
     </tr>
   </tbody>
 </table>
@@ -3872,11 +3877,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>4.493520</td>
-      <td>3.626821</td>
-      <td>0.393020</td>
-      <td>37.593121</td>
-      <td>01:38</td>
+      <td>4.493653</td>
+      <td>3.554004</td>
+      <td>0.404785</td>
+      <td>34.952980</td>
+      <td>01:48</td>
     </tr>
   </tbody>
 </table>
@@ -3925,82 +3930,82 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>3.756268</td>
-      <td>3.606677</td>
-      <td>0.395410</td>
-      <td>36.843430</td>
-      <td>01:37</td>
+      <td>3.789885</td>
+      <td>3.534729</td>
+      <td>0.407548</td>
+      <td>34.285706</td>
+      <td>01:46</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>3.722715</td>
-      <td>3.534695</td>
-      <td>0.399615</td>
-      <td>34.284554</td>
-      <td>01:38</td>
+      <td>3.752954</td>
+      <td>3.466075</td>
+      <td>0.413096</td>
+      <td>32.010853</td>
+      <td>01:45</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>3.670052</td>
-      <td>3.445324</td>
-      <td>0.408519</td>
-      <td>31.353439</td>
-      <td>01:36</td>
+      <td>3.695044</td>
+      <td>3.380348</td>
+      <td>0.420731</td>
+      <td>29.381001</td>
+      <td>01:45</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>3.608591</td>
-      <td>3.377170</td>
-      <td>0.415497</td>
-      <td>29.287779</td>
-      <td>01:36</td>
+      <td>3.633570</td>
+      <td>3.311184</td>
+      <td>0.427943</td>
+      <td>27.417580</td>
+      <td>01:44</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>3.545309</td>
-      <td>3.328276</td>
-      <td>0.421299</td>
-      <td>27.890228</td>
-      <td>01:37</td>
+      <td>3.567487</td>
+      <td>3.263233</td>
+      <td>0.432484</td>
+      <td>26.133884</td>
+      <td>01:43</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>3.483710</td>
-      <td>3.294219</td>
-      <td>0.425069</td>
-      <td>26.956341</td>
-      <td>01:37</td>
+      <td>3.499947</td>
+      <td>3.227200</td>
+      <td>0.436647</td>
+      <td>25.208973</td>
+      <td>01:45</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>3.428636</td>
-      <td>3.272936</td>
-      <td>0.427655</td>
-      <td>26.388706</td>
-      <td>01:37</td>
+      <td>3.441441</td>
+      <td>3.206076</td>
+      <td>0.438934</td>
+      <td>24.682047</td>
+      <td>01:45</td>
     </tr>
     <tr>
       <td>7</td>
-      <td>3.388489</td>
-      <td>3.262204</td>
-      <td>0.429664</td>
-      <td>26.107006</td>
-      <td>01:37</td>
+      <td>3.396994</td>
+      <td>3.195556</td>
+      <td>0.440499</td>
+      <td>24.423742</td>
+      <td>01:44</td>
     </tr>
     <tr>
       <td>8</td>
-      <td>3.352031</td>
-      <td>3.257177</td>
-      <td>0.430366</td>
-      <td>25.976101</td>
-      <td>01:37</td>
+      <td>3.362832</td>
+      <td>3.190961</td>
+      <td>0.441435</td>
+      <td>24.311789</td>
+      <td>01:40</td>
     </tr>
     <tr>
       <td>9</td>
-      <td>3.335237</td>
-      <td>3.256474</td>
-      <td>0.430461</td>
-      <td>25.957844</td>
+      <td>3.352602</td>
+      <td>3.190133</td>
+      <td>0.441630</td>
+      <td>24.291660</td>
       <td>01:37</td>
     </tr>
   </tbody>
@@ -4018,7 +4023,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The accuracy above represents the models ability to predict the next word in a sequence from our disaster tweets data. <code>42.51%</code>! That's pretty dang good for something that took about the same time as our Word2Vec models.</p>
+<p>The accuracy above represents the models ability to predict the next word in a sequence from our disaster tweets data. <code>44.16%</code>! That's pretty dang good for something that took about the same time as our Word2Vec models.</p>
 <p>But we're not after text prediction, we're after text classification. Let's turn to that now.</p>
 <p>First, let's create a <code>DataBlock</code> that we'll pass to <code>text_classifier_learner</code>. Notice that now we're passing two blocks to the <code>blocks</code> parameter: <code>TextBlock</code> and <code>CategoryBlock</code>. We specify these with the <code>get_x</code> and <code>get_y</code> parameters. It is also important to note the new <code>TextBlock</code> parameter <code>vocab</code>. Without this, the language model fitting we did above will mean nothing!</p>
 
@@ -4054,15 +4059,6 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 
 </div>
 
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/opt/miniconda3/lib/python3.8/site-packages/numpy/core/_asarray.py:83: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
-  return array(a, dtype, copy=False, order=order)
-</pre>
-</div>
 </div>
 
 </div>
@@ -4111,17 +4107,17 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <th>0</th>
-      <td>xxbos _ xxunk xxrep 5 ? xxup xxunk xxunk xxrep 7 ? xxunk xxrep 5 ? xxup follow xxup all xxup who xxup rt xxunk xxrep 7 ? xxunk xxrep 5 ? xxup xxunk xxunk xxrep 7 ? xxunk xxrep 5 ? xxup xxunk xxup with xxunk xxrep 7 ? xxunk xxrep 5 ? xxup follow ? xxunk # xxup xxunk xxunk # xxup ty</td>
+      <td>xxbos _ xxunk xxrep 5 ? xxup retweet xxunk xxrep 7 ? xxunk xxrep 5 ? xxup follow xxup all xxup who xxup rt xxunk xxrep 7 ? xxunk xxrep 5 ? xxup xxunk xxunk xxrep 7 ? xxunk xxrep 5 ? xxup gain xxup with xxunk xxrep 7 ? xxunk xxrep 5 ? xxup follow ? xxunk # xxup xxunk xxunk # xxup ty</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>xxbos xxup info xxup u. xxup xxunk : xxup xxunk xxup xxunk . xxup exp xxup inst xxup apch . xxup rwy 05 . xxup curfew xxup in xxup oper xxup until 2030 xxup z. xxup taxiways xxup foxtrot 5 &amp; &amp; xxup foxtrot 6 xxup navbl . xxup tmp : 10 . xxup wnd : xxunk / 6 . xxpad xxpad xxpad xxpad xxpad</td>
+      <td>xxbos . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : . : xxup rt xxunk : # xxunk \n\n xxmaj indian xxmaj army xxunk _ http : / / t.co / xxunk g xxpad</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>xxbos xxup info xxup r. xxup curfew xxup in xxup oper xxup until 2030 xxup z. xxup taxiways xxup foxtrot 5 &amp; &amp; xxup foxtrot 6 xxup navbl . xxup wnd : xxunk / 5 . xxup exp xxup inst xxup apch . xxup rwy 05 . xxup xxunk . xxup tmp : 10 . xxup xxunk : xxunk . xxpad xxpad xxpad xxpad xxpad</td>
+      <td>xxbos xxup info xxup s. xxup xxunk : xxunk / 6 . xxup xxunk : xxup xxunk xxup xxunk . xxup exp xxup xxunk xxup xxunk . xxup xxunk 05 . xxup curfew xxup in xxup xxunk xxup until xxunk xxup xxunk xxup xxunk xxup foxtrot 5 &amp; &amp; xxup foxtrot 6 xxup xxunk . xxup xxunk : 10 . xxpad xxpad xxpad xxpad xxpad</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -4206,11 +4202,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.758835</td>
-      <td>0.490689</td>
-      <td>0.770696</td>
-      <td>0.712284</td>
-      <td>00:44</td>
+      <td>0.752347</td>
+      <td>0.520742</td>
+      <td>0.745729</td>
+      <td>0.674516</td>
+      <td>00:43</td>
     </tr>
   </tbody>
 </table>
@@ -4269,11 +4265,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.650367</td>
-      <td>0.483046</td>
-      <td>0.781209</td>
-      <td>0.740047</td>
-      <td>00:53</td>
+      <td>0.643792</td>
+      <td>0.498137</td>
+      <td>0.766754</td>
+      <td>0.712084</td>
+      <td>00:52</td>
     </tr>
   </tbody>
 </table>
@@ -4323,11 +4319,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.559126</td>
-      <td>0.457762</td>
-      <td>0.800263</td>
-      <td>0.743243</td>
-      <td>01:29</td>
+      <td>0.547749</td>
+      <td>0.476135</td>
+      <td>0.777267</td>
+      <td>0.709512</td>
+      <td>01:32</td>
     </tr>
   </tbody>
 </table>
@@ -4377,19 +4373,19 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.504711</td>
-      <td>0.439913</td>
-      <td>0.803548</td>
-      <td>0.766224</td>
+      <td>0.491142</td>
+      <td>0.465297</td>
+      <td>0.783180</td>
+      <td>0.732143</td>
       <td>02:07</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>0.486418</td>
-      <td>0.433688</td>
-      <td>0.808147</td>
-      <td>0.769716</td>
-      <td>02:06</td>
+      <td>0.473932</td>
+      <td>0.457790</td>
+      <td>0.793036</td>
+      <td>0.737719</td>
+      <td>02:08</td>
     </tr>
   </tbody>
 </table>
@@ -4406,7 +4402,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After fully unfreezing and fitting our model, our accuracy is... <code>80.81%</code>! Over 11% better than our best Word2Vec! Impressive. Our F1 score of <code>0.770</code> also blows away our best Word2Vec F1 score of <code>0.450</code>. Impressive, indeed.</p>
+<p>After fully unfreezing and fitting our model, our accuracy is... <code>79.30%</code>! Over 11% better than our best Word2Vec! Impressive. Our F1 score of <code>0.738</code> also blows away our best Word2Vec F1 score of <code>0.433</code>. Impressive, indeed.</p>
 <p>But how will transfer learning perform will the preprocessed tweets? Let's find out!</p>
 
 </div>
@@ -4489,11 +4485,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>6.019077</td>
-      <td>5.163853</td>
-      <td>0.198145</td>
-      <td>174.836746</td>
-      <td>00:56</td>
+      <td>6.009004</td>
+      <td>5.068555</td>
+      <td>0.197061</td>
+      <td>158.944473</td>
+      <td>00:58</td>
     </tr>
   </tbody>
 </table>
@@ -4519,83 +4515,83 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>5.322052</td>
-      <td>5.142820</td>
-      <td>0.199809</td>
-      <td>171.197922</td>
-      <td>00:56</td>
+      <td>5.313193</td>
+      <td>5.048050</td>
+      <td>0.201638</td>
+      <td>155.718506</td>
+      <td>00:57</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>5.295057</td>
-      <td>5.063235</td>
-      <td>0.211279</td>
-      <td>158.101196</td>
-      <td>00:56</td>
+      <td>5.282051</td>
+      <td>4.972396</td>
+      <td>0.211692</td>
+      <td>144.372375</td>
+      <td>00:57</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>5.253794</td>
-      <td>4.969788</td>
-      <td>0.215545</td>
-      <td>143.996292</td>
-      <td>00:56</td>
+      <td>5.232960</td>
+      <td>4.881814</td>
+      <td>0.219846</td>
+      <td>131.869598</td>
+      <td>00:58</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>5.187418</td>
-      <td>4.889296</td>
-      <td>0.228875</td>
-      <td>132.859955</td>
-      <td>00:56</td>
+      <td>5.169006</td>
+      <td>4.806246</td>
+      <td>0.229412</td>
+      <td>122.271782</td>
+      <td>00:57</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>5.118052</td>
-      <td>4.829380</td>
-      <td>0.229359</td>
-      <td>125.133362</td>
-      <td>00:56</td>
+      <td>5.102448</td>
+      <td>4.749909</td>
+      <td>0.234766</td>
+      <td>115.573761</td>
+      <td>00:57</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>5.050055</td>
-      <td>4.783056</td>
-      <td>0.237052</td>
-      <td>119.468918</td>
-      <td>00:56</td>
+      <td>5.040435</td>
+      <td>4.709253</td>
+      <td>0.237660</td>
+      <td>110.969269</td>
+      <td>01:01</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>4.993558</td>
-      <td>4.753863</td>
-      <td>0.240452</td>
-      <td>116.031631</td>
-      <td>00:56</td>
+      <td>4.987535</td>
+      <td>4.681636</td>
+      <td>0.241375</td>
+      <td>107.946518</td>
+      <td>01:02</td>
     </tr>
     <tr>
       <td>7</td>
-      <td>4.942537</td>
-      <td>4.738311</td>
-      <td>0.240891</td>
-      <td>114.241066</td>
-      <td>00:56</td>
+      <td>4.935099</td>
+      <td>4.666973</td>
+      <td>0.243062</td>
+      <td>106.375267</td>
+      <td>01:02</td>
     </tr>
     <tr>
       <td>8</td>
-      <td>4.901583</td>
-      <td>4.732070</td>
-      <td>0.242556</td>
-      <td>113.530380</td>
-      <td>00:56</td>
+      <td>4.900142</td>
+      <td>4.660895</td>
+      <td>0.244003</td>
+      <td>105.730652</td>
+      <td>01:02</td>
     </tr>
     <tr>
       <td>9</td>
-      <td>4.869204</td>
-      <td>4.731000</td>
-      <td>0.242702</td>
-      <td>113.408905</td>
-      <td>00:56</td>
+      <td>4.867511</td>
+      <td>4.659934</td>
+      <td>0.244407</td>
+      <td>105.629066</td>
+      <td>01:02</td>
     </tr>
   </tbody>
 </table>
@@ -4610,15 +4606,6 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 
 </div>
 
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/opt/miniconda3/lib/python3.8/site-packages/numpy/core/_asarray.py:83: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
-  return array(a, dtype, copy=False, order=order)
-</pre>
-</div>
 </div>
 
 </div>
@@ -4671,10 +4658,10 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.737682</td>
-      <td>0.509384</td>
-      <td>0.750986</td>
-      <td>0.726354</td>
+      <td>0.733424</td>
+      <td>0.527626</td>
+      <td>0.749014</td>
+      <td>0.694400</td>
       <td>00:27</td>
     </tr>
   </tbody>
@@ -4733,11 +4720,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.617487</td>
-      <td>0.482516</td>
-      <td>0.769382</td>
-      <td>0.729375</td>
-      <td>00:32</td>
+      <td>0.613524</td>
+      <td>0.516843</td>
+      <td>0.743101</td>
+      <td>0.703113</td>
+      <td>00:33</td>
     </tr>
   </tbody>
 </table>
@@ -4787,11 +4774,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.534399</td>
-      <td>0.475102</td>
-      <td>0.775296</td>
-      <td>0.717355</td>
-      <td>00:55</td>
+      <td>0.536539</td>
+      <td>0.490117</td>
+      <td>0.762155</td>
+      <td>0.720247</td>
+      <td>00:56</td>
     </tr>
   </tbody>
 </table>
@@ -4841,19 +4828,19 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.489055</td>
-      <td>0.448742</td>
-      <td>0.799606</td>
-      <td>0.764842</td>
+      <td>0.477936</td>
+      <td>0.467683</td>
+      <td>0.787122</td>
+      <td>0.732673</td>
       <td>01:19</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>0.463102</td>
-      <td>0.445263</td>
-      <td>0.802234</td>
-      <td>0.766847</td>
-      <td>01:18</td>
+      <td>0.460449</td>
+      <td>0.468069</td>
+      <td>0.785808</td>
+      <td>0.731023</td>
+      <td>01:20</td>
     </tr>
   </tbody>
 </table>
@@ -4870,7 +4857,7 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Accuracy: <code>80.22%</code>. F1 score: <code>0.767</code>.</p>
+<p>Accuracy: <code>78.58%</code>. F1 score: <code>0.731</code>.</p>
 <p>Nearly the same as, but not quite better than the unprocessed tweets. This is the opposite of what happened with TF-IDF and Word2Vec.</p>
 <p>Let's see how the SpaCy tweets perform:</p>
 
@@ -4949,11 +4936,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>5.713386</td>
-      <td>4.250023</td>
-      <td>0.369869</td>
-      <td>70.107018</td>
-      <td>01:03</td>
+      <td>5.682709</td>
+      <td>4.324547</td>
+      <td>0.359819</td>
+      <td>75.531273</td>
+      <td>01:02</td>
     </tr>
   </tbody>
 </table>
@@ -4979,82 +4966,82 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>4.653237</td>
-      <td>4.210376</td>
-      <td>0.370858</td>
-      <td>67.381859</td>
-      <td>01:02</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>4.582531</td>
-      <td>4.049045</td>
-      <td>0.403041</td>
-      <td>57.342648</td>
-      <td>01:02</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>4.480067</td>
-      <td>3.906515</td>
-      <td>0.421333</td>
-      <td>49.725338</td>
+      <td>4.665442</td>
+      <td>4.285821</td>
+      <td>0.361470</td>
+      <td>72.662209</td>
       <td>01:01</td>
     </tr>
     <tr>
+      <td>1</td>
+      <td>4.583601</td>
+      <td>4.133880</td>
+      <td>0.388832</td>
+      <td>62.419621</td>
+      <td>01:01</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>4.486686</td>
+      <td>3.995918</td>
+      <td>0.411705</td>
+      <td>54.375725</td>
+      <td>01:02</td>
+    </tr>
+    <tr>
       <td>3</td>
-      <td>4.384799</td>
-      <td>3.809164</td>
-      <td>0.434499</td>
-      <td>45.112709</td>
+      <td>4.398295</td>
+      <td>3.909034</td>
+      <td>0.419096</td>
+      <td>49.850784</td>
       <td>01:01</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>4.299644</td>
-      <td>3.742372</td>
-      <td>0.440083</td>
-      <td>42.197945</td>
+      <td>4.326467</td>
+      <td>3.845958</td>
+      <td>0.424627</td>
+      <td>46.803497</td>
       <td>01:02</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>4.220522</td>
-      <td>3.691609</td>
-      <td>0.444460</td>
-      <td>40.109318</td>
-      <td>01:03</td>
+      <td>4.241285</td>
+      <td>3.802249</td>
+      <td>0.428516</td>
+      <td>44.801819</td>
+      <td>01:01</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>4.166790</td>
-      <td>3.660479</td>
-      <td>0.448433</td>
-      <td>38.879967</td>
-      <td>01:04</td>
+      <td>4.178056</td>
+      <td>3.773062</td>
+      <td>0.433052</td>
+      <td>43.513077</td>
+      <td>01:01</td>
     </tr>
     <tr>
       <td>7</td>
-      <td>4.110455</td>
-      <td>3.642861</td>
-      <td>0.450266</td>
-      <td>38.200970</td>
-      <td>01:02</td>
+      <td>4.115740</td>
+      <td>3.756646</td>
+      <td>0.434881</td>
+      <td>42.804615</td>
+      <td>01:01</td>
     </tr>
     <tr>
       <td>8</td>
-      <td>4.065619</td>
-      <td>3.636134</td>
-      <td>0.450706</td>
-      <td>37.944855</td>
+      <td>4.073174</td>
+      <td>3.751379</td>
+      <td>0.435884</td>
+      <td>42.579758</td>
       <td>01:01</td>
     </tr>
     <tr>
       <td>9</td>
-      <td>4.030597</td>
-      <td>3.635027</td>
-      <td>0.450852</td>
-      <td>37.902893</td>
+      <td>4.039183</td>
+      <td>3.750412</td>
+      <td>0.436159</td>
+      <td>42.538593</td>
       <td>01:01</td>
     </tr>
   </tbody>
@@ -5070,15 +5057,6 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 
 </div>
 
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/opt/miniconda3/lib/python3.8/site-packages/numpy/core/_asarray.py:83: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
-  return array(a, dtype, copy=False, order=order)
-</pre>
-</div>
 </div>
 
 </div>
@@ -5131,10 +5109,10 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.792957</td>
-      <td>0.534716</td>
-      <td>0.754271</td>
-      <td>0.710078</td>
+      <td>0.796044</td>
+      <td>0.537777</td>
+      <td>0.747043</td>
+      <td>0.698039</td>
       <td>00:30</td>
     </tr>
   </tbody>
@@ -5193,11 +5171,11 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.677191</td>
-      <td>0.511442</td>
-      <td>0.761498</td>
-      <td>0.712133</td>
-      <td>00:36</td>
+      <td>0.683284</td>
+      <td>0.511340</td>
+      <td>0.770039</td>
+      <td>0.720893</td>
+      <td>00:37</td>
     </tr>
   </tbody>
 </table>
@@ -5247,10 +5225,10 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.589788</td>
-      <td>0.478241</td>
-      <td>0.780552</td>
-      <td>0.710069</td>
+      <td>0.595137</td>
+      <td>0.488891</td>
+      <td>0.781209</td>
+      <td>0.722269</td>
       <td>01:02</td>
     </tr>
   </tbody>
@@ -5301,18 +5279,18 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.545371</td>
-      <td>0.475847</td>
-      <td>0.784494</td>
-      <td>0.697417</td>
-      <td>01:27</td>
+      <td>0.554800</td>
+      <td>0.465724</td>
+      <td>0.790407</td>
+      <td>0.739592</td>
+      <td>01:29</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>0.531533</td>
-      <td>0.459217</td>
-      <td>0.787122</td>
-      <td>0.710714</td>
+      <td>0.537899</td>
+      <td>0.456067</td>
+      <td>0.789750</td>
+      <td>0.724138</td>
       <td>01:28</td>
     </tr>
   </tbody>
@@ -5330,8 +5308,8 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Et voilà! Accuracy: <code>78.71%</code>. F1 score: <code>0.711</code>.</p>
-<p>Whoa! These are the lowest of the three of our transfer learning models. How unexpected.</p>
+<p>Et voilà!</p>
+<p>Accuracy: <code>79.00%</code>. F1 score: <code>0.724</code>.</p>
 <p>So between the three datasets used in transfer learning, the unprocessed dataset seemed to perform the best! Unexpected, indeed.</p>
 
 </div>
@@ -5381,38 +5359,38 @@ We'll need two classes from fastai to conduct transfer learning with text: <code
 <tr>
 <td><strong>Word2Vec</strong></td>
 <td>Unprocessed</td>
-<td>63.13%</td>
-<td>0.269</td>
+<td>63.39%</td>
+<td>0.278</td>
 </tr>
 <tr>
 <td>''</td>
 <td>"Simple"</td>
-<td>67.54%</td>
-<td>0.448</td>
+<td>67.28%</td>
+<td>0.433</td>
 </tr>
 <tr>
 <td>''</td>
 <td>SpaCy</td>
-<td>64.81%</td>
-<td>0.334</td>
+<td>64.44%</td>
+<td>0.324</td>
 </tr>
 <tr>
 <td><strong>Transfer Learning</strong></td>
 <td><strong>Unprocessed</strong></td>
-<td><strong>80.81%</strong></td>
-<td><strong>0.770</strong></td>
+<td><strong>79.30%</strong></td>
+<td><strong>0.738</strong></td>
 </tr>
 <tr>
 <td>''</td>
 <td>"Simple"</td>
-<td>80.22%</td>
-<td>0.767</td>
+<td>75.58%</td>
+<td>0.731</td>
 </tr>
 <tr>
 <td>''</td>
 <td>SpaCy</td>
-<td>78.71%</td>
-<td>0.711</td>
+<td>79.00%</td>
+<td>0.724</td>
 </tr>
 </tbody>
 </table>
